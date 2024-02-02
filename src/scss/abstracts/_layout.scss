@@ -1,0 +1,21 @@
+ .superior { background-color:$color-principal; }
+ .superior .contenido { padding:15px 40px; display:flex; justify-content:space-between; }
+ .superior .info { display:inline-block; margin-right:10px; }
+ .superior .info li { display:inline-block; vertical-align:middle; padding-left:22px; padding-right:15px; font-size:11px; color:#fff; font-weight:600; background-repeat:no-repeat; background-position:0; line-height:20px; }
+ .superior .info li.ubicacion { background-image:url(../img/layout/iconos/marcador-blanco.png); background-size:auto 20px; }
+ .superior .info li.telefono { background-image:url(../img/layout/iconos/telefono-blanco.png); background-size:auto 15px; }
+ .superior .info li.email { background-image:url(../img/layout/iconos/email-blanco.png); background-size:auto 12px; }
+ .superior .derecha { display:flex; color:white; font-size:13px; align-items:center; }
+ .superior .derecha .col { margin-left:15px; }
+ 
+ .superior strong { white-space:nowrap; }
+ .superior .clima { display:flex; }
+ .superior .clima i { margin-right: 8px; display: inline-block; vertical-align: middle; font-size: 20px; }
+ .superior .clima span { vertical-align:middle; }
+ .superior .redes { display:flex; align-items:center; }
+ .superior .redes a { background-size:contain; background-position:50%; background-repeat:no-repeat; margin-right:10px; -webkit-transition:-webkit-transform .7s ease; transition:-webkit-transform .7s ease; transition:transform .7s ease; transition:transform .7s ease,-webkit-transform .7s ease; }
+ .superior .redes a:last-child { margin-right:0; }
+ .superior .redes a:hover { -webkit-transform:rotate(45deg); transform:rotate(45deg); }
+ .superior .redes a.facebook { width:9px; height:17px; background-image:url(../../img/facebook-blanco.svg); }
+ .superior .redes a.twitter { width:16px; height:14px; background-image:url(../../img/twitter-blanco.svg); }
+ .superior .redes a.instagram { width:16px; height:16px; background-image:url(../../img/instagram-blanco.svg); }
