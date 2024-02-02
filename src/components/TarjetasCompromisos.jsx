@@ -5,7 +5,7 @@ import Tarjeta from './Tarjeta'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const TarjetasCompromisos = (props) => {
-    console.log(props)
+    console.log(props.compromisos)
     return (
         <Container>
             <Row>
@@ -13,8 +13,8 @@ const TarjetasCompromisos = (props) => {
                     <Card.Body>
                         <motion.div layout className="tarjetas-compromisos">
                             <AnimatePresence>
-                                {props.compromisos && props.compromisos.map((compromiso) => {
-                                    return <Tarjeta compromiso={compromiso} />
+                                {props.compromisos && props.compromisos.map((compromiso,index) => {
+                                    return <Tarjeta key={index} compromiso={compromiso} />
                                 })}
                             </AnimatePresence>
                         </motion.div>
