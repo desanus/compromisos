@@ -50,8 +50,26 @@ const ExploradorCompromisos = (props) => {
         props.handleCompromisos(comp);
     };
 
+    const handleLocalidadChange = (event) => {
+        const selectedLocalidad = parseInt(event.target.value);
+        console.log(selectedLocalidad)
+        if (selectedLocalidad === 0) {
+            // Si el valor seleccionado es 0, mostrar todos los compromisos
+            props.handleCompromisos(props.compromisos);
+        } else {
+            // Filtrar compromisos por el año seleccionado
+            const comp = props.compromisos.filter((compromiso) => {
+                return compromiso.localidad === selectedLocalidad;
+            });
+
+            // Actualizar el estado de compromisos con el resultado del filtro por año
+            props.handleCompromisos(comp);
+        }
+    }
+
     const handleAnioChange = (event) => {
         const selectedAnio = parseInt(event.target.value, 10);
+        console.log(selectedAnio)
 
         if (selectedAnio === 0) {
             // Si el valor seleccionado es 0, mostrar todos los compromisos
@@ -69,19 +87,19 @@ const ExploradorCompromisos = (props) => {
     const [checkboxValue, setCheckboxValue] = useState('');
 
     const filtrarPorcentaje = (piso, techo) => {
-        console.log(piso, techo)
+
         const comp = props.compromisos.filter((compromiso) => {
             // Ajusta los números según tus necesidades
             const rangoInicio = piso;
             const rangoFin = techo;
-
+            console.log(compromiso.porcentaje)
             // Filtra compromisos con porcentaje en el rango especificado
             return compromiso.porcentaje >= rangoInicio && compromiso.porcentaje <= rangoFin;
         });
+        return comp;
     }
     const handleCheckboxChange = (event) => {
         const value = event.target.value;
-        console.log(value)
         // Si la checkbox seleccionada es la misma que ya estaba seleccionada, deselecciónala
         if (checkboxValue === value) {
             setCheckboxValue('');
@@ -152,9 +170,9 @@ const ExploradorCompromisos = (props) => {
                         <Col md={2}>
 
                             <Form.Group className="mb-3">
-                                <Form.Label className='input-filter'>Buscà por año:</Form.Label>
-                                <Form.Select onChange={handleAnioChange} className='filter-input-dropdown'>
-                                    <option defaultValue={0}>( todos los años )</option>
+                                <Form.Label className='input-filter'>Buscá por año:</Form.Label>
+                                <Form.Select onChange={handleAnioChange} className='filter-input-dropdown' defaultValue={0}>
+                                    <option value={0}>( todos los años )</option>
                                     <option value={2024}>2024</option>
                                     <option value={2025}>2025</option>
                                     <option value={2026}>2026</option>
@@ -208,8 +226,8 @@ const ExploradorCompromisos = (props) => {
 
                             <Form.Group className="mb-3">
                                 <Form.Label className='input-filter'>Buscar por localidad:</Form.Label>
-                                <Form.Select onChange={handleAnioChange} className='filter-input-dropdown'>
-                                    <option defaultValue={0}>( todas las localidades )</option>
+                                <Form.Select onChange={handleLocalidadChange} className='filter-input-dropdown' defaultValue={0}>
+                                    <option value={0}>( todos las localidades )</option>
                                     <option value={1}>Localidad 1</option>
                                     <option value={2}>Localidad 2</option>
                                     <option value={3}>Localidad 3</option>

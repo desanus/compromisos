@@ -7,14 +7,14 @@ const Compromisos = () => {
 
     const [compromisos, setCompromisos] = useState(
         [
-            { id: '1', nombre: "compromiso1", porcentaje: 10, localidad: 4, anio: 2024, tipo: [{ categoria: 1 }, { categoria: 2 }, { categoria: 3 }] },
-            { id: '2', nombre: "compromiso2", porcentaje: 20, localidad: 4, anio: 2024, tipo: [{ categoria: 1 }, { categoria: 4 }, { categoria: 5 }] },
-            { id: '3', nombre: "compromiso3", porcentaje: 30, localidad: 2, anio: 2024, tipo: [{ categoria: 1 }, { categoria: 6 }, { categoria: 7 }] },
-            { id: '4', nombre: "compromiso4", porcentaje: 40, localidad: 3, anio: 2025, tipo: [{ categoria: 1 }, { categoria: 8 }, { categoria: 3 }] },
-            { id: '5', nombre: "compromiso5", porcentaje: 50, localidad: 1, anio: 2024, tipo: [{ categoria: 1 }, { categoria: 4 }, { categoria: 3 }] },
-            { id: '6', nombre: "compromiso6", porcentaje: 60, localidad: 2, anio: 2027, tipo: [{ categoria: 1 }, { categoria: 4 }, { categoria: 3 }] },
-            { id: '7', nombre: "compromiso7", porcentaje: 100, localidad: 3, anio: 2026, tipo: [{ categoria: 1 }, { categoria: 6 }, { categoria: 5 }] },
-            { id: '8', nombre: "compromiso8", porcentaje: 100, localidad: 2, anio: 2026, tipo: [{ categoria: 1 }, { categoria: 6 }, { categoria: 5 }] }
+            { id: 1, nombre: "compromiso1", porcentaje: 10, localidad: 4, anio: 2024, tipo: [{ categoria: 1 }, { categoria: 2 }, { categoria: 3 }] },
+            { id: 2, nombre: "calles", porcentaje: 20, localidad: 4, anio: 2024, tipo: [{ categoria: 1 }, { categoria: 4 }, { categoria: 5 }] },
+            { id: 3, nombre: "edificios", porcentaje: 30, localidad: 2, anio: 2024, tipo: [{ categoria: 1 }, { categoria: 6 }, { categoria: 7 }] },
+            { id: 4, nombre: "salud", porcentaje: 40, localidad: 3, anio: 2025, tipo: [{ categoria: 1 }, { categoria: 8 }, { categoria: 3 }] },
+            { id: 5, nombre: "compromiso5", porcentaje: 50, localidad: 1, anio: 2024, tipo: [{ categoria: 1 }, { categoria: 4 }, { categoria: 3 }] },
+            { id: 6, nombre: "seguridad", porcentaje: 60, localidad: 2, anio: 2027, tipo: [{ categoria: 1 }, { categoria: 4 }, { categoria: 3 }] },
+            { id: 7, nombre: "espacio verde", porcentaje: 100, localidad: 3, anio: 2026, tipo: [{ categoria: 1 }, { categoria: 6 }, { categoria: 5 }] },
+            { id: 8, nombre: "plazas", porcentaje: 100, localidad: 2, anio: 2026, tipo: [{ categoria: 1 }, { categoria: 6 }, { categoria: 5 }] }
         ])
 
     const [compromisosFiltrados, setCompromisosFiltrados] = useState(null)
