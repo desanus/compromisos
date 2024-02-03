@@ -14,14 +14,14 @@ const Tarjeta = (props) => {
             inital={{ opacity: 0 }}
             exit={{ opacity: 1 }}
             layout >
-            <h2>nombre: {props.compromiso.nombre}</h2>
+            {/* <h2>nombre: {props.compromiso.nombre}</h2>
             <h2>porcentaje: {props.compromiso.porcentaje}%</h2>
             <h2>año: {props.compromiso.anio}</h2>
             <h2>Localidad: {props.compromiso.localidad}</h2>
             <h2>Categorias:</h2>
             {props.compromiso.tipo.map((c,index)=>{
                 return <h2 key={index}>{c.categoria}</h2>
-            })} 
+            })}  */}
             <img src={imagen} alt="Red Image" className='tarjetas-img' />
         </motion.div>
     )

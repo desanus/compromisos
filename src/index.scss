@@ -4,8 +4,8 @@
 @import './scss/abstracts/variables';
 @import './scss/abstracts/variables-front';
 @import './scss/abstracts/mixins';
-@import './scss/abstracts/layout';
-
+//@import './scss/abstracts/layout';
+@import './scss/abstracts/layoutLaravel';
 //base
 @import './scss/base/base';
 @import './scss/base/resets';

@@ -7,8 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const TarjetasCompromisos = (props) => {
     console.log(props.compromisos)
     return (
-        <Container>
-            <Row>
+            <>
                 <Card>
                     <Card.Body>
                         <motion.div layout className="tarjetas-compromisos">
@@ -22,8 +21,7 @@ const TarjetasCompromisos = (props) => {
                 </Card>
 
 
-            </Row>
-        </Container >
+            </>
     )
 }
 

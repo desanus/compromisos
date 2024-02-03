@@ -1,25 +1,30 @@
 
 import './App.scss'
-import Navbar from './components/Navbar'
+import NavbarLanus from './components/NavbarLanus'
 
 import { Col, Row, Container } from 'react-bootstrap'
 import Compromisos from './components/Compromisos'
+import Footer from './components/Footer'
 
 function App() {
 
 
   return (
-    <div className='App'>
-      <Container>
+    
+      <div className='contenedor-general'>
+    
+          <NavbarLanus />
+        
 
-        <Navbar></Navbar>
         <p></p>
-        <Compromisos />
+        
+          <Compromisos />
+      
+        <p></p>
+        <Footer />
 
-      </Container>
-
-
-    </div >
+      </div>
+    
   )
 }
 
