@@ -29,15 +29,15 @@ const NavbarLanus = () => {
                 </div>
             </div>
 
-            <div class="inferior">
-                <a class="logo" href="/"></a>
+            <div className="inferior">
+                <a className="logo" href="/"></a>
 
 
 
-                <div class="menu">
-                    <a class="desplegar desplegar-menu" tabindex="0"><span></span><span></span><span></span></a>
+                <div className="menu">
+                    <a className="desplegar desplegar-menu" tabIndex={0}><span></span><span></span><span></span></a>
                     <nav uawraparea="1" wrapareatype="menu">
-                        <ul class="contenido" role="menubar">
+                        <ul className="contenido" role="menubar">
                             <li>
                                 <a href="https://www.lanus.gob.ar/fichas/5285-lanus-digital" target="_blank" data-andiallelmwithtext="13" mainchilds="0" role="menuitem">LANÚS DIGITAL</a>
                             </li>

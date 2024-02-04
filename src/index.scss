@@ -6,10 +6,12 @@
 @import './scss/abstracts/mixins';
 //@import './scss/abstracts/layout';
 @import './scss/abstracts/layoutLaravel';
+
+
 //base
 @import './scss/base/base';
 @import './scss/base/resets';
-
+@import './scss/base/errorpage';
 
 
 

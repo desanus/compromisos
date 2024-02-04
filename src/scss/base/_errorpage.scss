@@ -1,0 +1,16 @@
+.error {
+
+    h1 {
+        font-size: 50px;
+        color: $color-principal;
+    }
+    .row-e {
+        margin-top: 100px;
+        margin-left: 20px;
+    }
+    .volver {
+        &:hover {
+          color: $color-principal;
+        }
+      }
+}
