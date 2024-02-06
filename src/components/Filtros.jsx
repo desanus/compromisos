@@ -8,15 +8,22 @@ import Form from 'react-bootstrap/Form';
 const ExploradorCompromisos = (props) => {
 
     const [checkedIndex, setCheckedIndex] = useState(null);
+    const [checkedIndexEje, setCheckedIndexEje] = useState(null);
 
     const botones = [
-        { nombre: 'categoria 1', id: 1 },
-        { nombre: 'categoria 2', id: 2 },
-        { nombre: 'categoria 3', id: 3 },
-        { nombre: 'categoria 4', id: 4 },
-        { nombre: 'categoria 5', id: 5 },
-        { nombre: 'categoria 6', id: 6 },
-        { nombre: 'categoria 7', id: 7 }
+        { nombre: 'area 1', id: 1 },
+        { nombre: 'area 2', id: 2 },
+        { nombre: 'area 3', id: 3 },
+        { nombre: 'area 4', id: 4 },
+        { nombre: 'area 5', id: 5 },
+        { nombre: 'area 6', id: 6 },
+        { nombre: 'area 7', id: 7 }
+    ];
+
+    const ejes = [
+        { nombre: 'eje 1', id: 1 },
+        { nombre: 'eje 2', id: 2 },
+        { nombre: 'eje 3', id: 3 }
     ];
 
     useEffect(() => {
@@ -27,11 +34,23 @@ const ExploradorCompromisos = (props) => {
         setCheckedIndex(index === checkedIndex ? null : index);
 
         const comp = props.compromisos.filter((compromiso) => {
-            return compromiso.tipo && compromiso.tipo.some((tipo) => tipo.categoria === index);
+            return compromiso.areas && compromiso.areas.some((areas) => areas.area === index);
         });
         props.handleCompromisos(comp)
 
     };
+
+
+    const handleButtonEjes = (index) => {
+        setCheckedIndexEje(index === checkedIndexEje ? null : index);
+
+        const comp = props.compromisos.filter((compromiso) => {
+            return compromiso.ejes && compromiso.ejes.some((ejes) => ejes.eje === index);
+        });
+        props.handleCompromisos(comp)
+
+    };
+
     const [busqueda, setbusqueda] = useState('');
 
     const handleInputChange = (event) => {
@@ -52,7 +71,7 @@ const ExploradorCompromisos = (props) => {
 
     const handleLocalidadChange = (event) => {
         const selectedLocalidad = parseInt(event.target.value);
-        console.log(selectedLocalidad)
+      
         if (selectedLocalidad === 0) {
             // Si el valor seleccionado es 0, mostrar todos los compromisos
             props.handleCompromisos(props.compromisos);
@@ -69,7 +88,7 @@ const ExploradorCompromisos = (props) => {
 
     const handleAnioChange = (event) => {
         const selectedAnio = parseInt(event.target.value, 10);
-        console.log(selectedAnio)
+        props.setSelectedAnio(selectedAnio)
 
         if (selectedAnio === 0) {
             // Si el valor seleccionado es 0, mostrar todos los compromisos
@@ -84,6 +103,29 @@ const ExploradorCompromisos = (props) => {
             props.handleCompromisos(comp);
         }
     };
+
+
+
+    
+
+
+    const handlePlazoChange = (event) => {
+        const selectedPlazo = parseInt(event.target.value, 10);
+
+        if (selectedPlazo === 0) {
+            // Si el valor seleccionado es 0, mostrar todos los compromisos
+            props.handleCompromisos(props.compromisos);
+        } else {
+            // Filtrar compromisos por el año seleccionado
+            const comp = props.compromisos.filter((compromiso) => {
+                return compromiso.plazo === selectedPlazo;
+            });
+
+            // Actualizar el estado de compromisos con el resultado del filtro por año
+            props.handleCompromisos(comp);
+        }
+    };
+
     const [checkboxValue, setCheckboxValue] = useState('');
 
     const filtrarPorcentaje = (piso, techo) => {
@@ -92,7 +134,7 @@ const ExploradorCompromisos = (props) => {
             // Ajusta los números según tus necesidades
             const rangoInicio = piso;
             const rangoFin = techo;
-            console.log(compromiso.porcentaje)
+     
             // Filtra compromisos con porcentaje en el rango especificado
             return compromiso.porcentaje >= rangoInicio && compromiso.porcentaje <= rangoFin;
         });
@@ -130,13 +172,12 @@ const ExploradorCompromisos = (props) => {
 
     return (
         <>
-            <Card>
+            <Card >
                 <Card.Body>
                     <Card.Title>Explorador de compromisos</Card.Title>
-                    <Card.Text>
-                        Filtrar por área
-                    </Card.Text>
+
                     <Row className='row-filtros'>
+                        <label> Filtrá por área</label>
                         <Col className="columna-filtro">
                             {botones.map((boton) => (
                                 <Badge
@@ -150,8 +191,38 @@ const ExploradorCompromisos = (props) => {
                             ))}
                         </Col>
                     </Row>
+                    <Row className='row-filtros'>
+                        <label> Filtrá por eje temático</label>
+
+                        <Col className="columna-filtro">
+                            {ejes.map((eje) => (
+                                <Badge
+                                    key={eje.id}
+                                    bg={eje.id === checkedIndexEje ? "success" : "primary"}
+                                    className="boton-hover"
+                                    onClick={() => handleButtonEjes(eje.id)}
+                                >
+                                    {eje.nombre}
+                                </Badge>
+                            ))}
+                        </Col>
+                    </Row>
 
                     <Row>
+
+                        <Col md={2}>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label className='input-filter'>Buscá por año:</Form.Label>
+                                <Form.Select onChange={handleAnioChange} className='filter-input-dropdown' defaultValue={2024}>
+
+                                    <option value={2024}>2024</option>
+                                    <option value={2025}>2025</option>
+                                    <option value={2026}>2026</option>
+                                    <option value={2027}>2027</option>
+                                </Form.Select>
+                            </Form.Group>
+                        </Col>
                         <Col md={3}>
                             <Form >
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -167,20 +238,21 @@ const ExploradorCompromisos = (props) => {
                             </Form>
                         </Col>
 
-                        <Col md={2}>
+                        <Col md={3}>
 
                             <Form.Group className="mb-3">
-                                <Form.Label className='input-filter'>Buscá por año:</Form.Label>
-                                <Form.Select onChange={handleAnioChange} className='filter-input-dropdown' defaultValue={0}>
-                                    <option value={0}>( todos los años )</option>
-                                    <option value={2024}>2024</option>
-                                    <option value={2025}>2025</option>
-                                    <option value={2026}>2026</option>
-                                    <option value={2027}>2027</option>
+                                <Form.Label className='input-filter'>Buscá por plazo:</Form.Label>
+                                <Form.Select onChange={handlePlazoChange} className='filter-input-dropdown' defaultValue={1}>
+
+                                    <option value={1}>A corto plazo</option>
+                                    <option value={2}>A mediano plazo</option>
+                                    <option value={3}>A largo plazo</option>
+
                                 </Form.Select>
                             </Form.Group>
                         </Col>
-                        <Col md={4}>
+
+                        {/* <Col md={4}>
 
                             <label className='input-filter'>
                                 Buscar por avance:
@@ -221,8 +293,10 @@ const ExploradorCompromisos = (props) => {
                                     />
                                 </Form.Group>
                             </Form>
-                        </Col>
-                        <Col md={3}>
+                        </Col> */}
+
+                        {/* POR AHORA NO VAMOS A HACER FILTROS POR LOCALIDAD */}
+                        {/* <Col md={3}>
 
                             <Form.Group className="mb-3">
                                 <Form.Label className='input-filter'>Buscar por localidad:</Form.Label>
@@ -234,7 +308,7 @@ const ExploradorCompromisos = (props) => {
                                     <option value={4}>Localidad 4</option>
                                 </Form.Select>
                             </Form.Group>
-                        </Col>
+                        </Col> */}
                     </Row>
                 </Card.Body>
             </Card>

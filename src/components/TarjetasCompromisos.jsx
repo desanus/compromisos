@@ -4,16 +4,20 @@ import { Row, Col, Container } from 'react-bootstrap'
 import Tarjeta from './Tarjeta'
 import { motion, AnimatePresence } from 'framer-motion'
 
+
+
 const TarjetasCompromisos = (props) => {
-    console.log(props.compromisos)
+
+
+
     return (
             <>
-                <Card>
+                <Card style={{border:"none"}}>
                     <Card.Body>
                         <motion.div layout className="tarjetas-compromisos">
                             <AnimatePresence>
                                 {props.compromisos && props.compromisos.map((compromiso,index) => {
-                                    return <Tarjeta key={index} compromiso={compromiso} />
+                                    return <Tarjeta key={index} compromiso={compromiso} selectedAnio={props.selectedAnio}/>
                                 })}
                             </AnimatePresence>
                         </motion.div>

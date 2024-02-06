@@ -4,7 +4,6 @@ import NavbarLanus from "./NavbarLanus";
 import { Row, Col } from 'react-bootstrap'
 export default function ErrorPage() {
   const error = useRouteError();
-  console.error(error);
 
   return (
     <div id="error-page" className="error contenedor-general">

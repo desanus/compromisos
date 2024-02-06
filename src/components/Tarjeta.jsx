@@ -1,29 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import imagen from '../img/logo.png'
+import completo from '../img/yes.png'
+import ModalCompromiso from './ModalCompromiso'
 import { motion } from 'framer-motion'
 
 
 const Tarjeta = (props) => {
     const redImageData = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAMAAAAAICAYAAAHYYMBpAAAAWElEQVR42mJ89+f5/AwAmBgCQEDF/8LAAAAAElFTkSuQmCC";
+    const [show, setShow] = useState(false);
+    
+    const handleClose = () => {
+       
+        setShow(false)
+    };
+    const handleShow = (e) => {
+        setShow(true)
+    };
 
-    console.log(props)
+
     return (
-        <motion.div
+        <motion.div className='compromiso'
             key={props.compromiso.id}
-            animate={{ opacity: 1 }}
-            inital={{ opacity: 0 }}
-            exit={{ opacity: 1 }}
-            layout >
-            {/* <h2>nombre: {props.compromiso.nombre}</h2>
-            <h2>porcentaje: {props.compromiso.porcentaje}%</h2>
-            <h2>año: {props.compromiso.anio}</h2>
-            <h2>Localidad: {props.compromiso.localidad}</h2>
-            <h2>Categorias:</h2>
-            {props.compromiso.tipo.map((c,index)=>{
-                return <h2 key={index}>{c.categoria}</h2>
-            })}  */}
-            <img src={imagen} alt="Red Image" className='tarjetas-img' />
-        </motion.div>
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            layout
+
+        >
+            <div onClick={handleShow}>
+                <div className="contenedor-imagenes" >
+                    <img src={imagen} alt="Red Image" className='tarjetas-img' />
+                    {(props.compromiso.porcentaje === 100) ?
+                        <img className="imagen-superpuesta" src={completo} alt="Imagen superpuesta" /> : <></>
+                    }
+                </div>
+
+                <div className="detalle">
+                    <p>{props.compromiso.nombre}</p>
+                </div>
+                <div className="detalle" >
+                    <p>{props.compromiso.porcentaje}%</p>
+                </div>
+            </div>
+            <ModalCompromiso show={show} handleclose={handleClose} compromiso={props.compromiso} anio={props.selectedAnio}/>
+
+        </motion.div >
     )
 }
 

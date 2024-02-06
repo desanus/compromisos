@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <Compromisos />
       },
       {
-        path: "compromiso/:compromisoId",
+        path: "compromiso/:compromisoId/anio/:anio",
         element: <Compromiso/>,
       },
     ],

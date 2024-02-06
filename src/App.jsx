@@ -8,22 +8,20 @@ function App() {
 
 
   return (
-    
-      <div className='contenedor-general'>
-    
-          <NavbarLanus />
-        
 
-       <Outlet/>
-        
-       
-      
-     
-        <Footer />
-        
+    <div className='contenedor-general'>
 
-      </div>
-    
+      <NavbarLanus />
+      <p></p>
+
+      <Outlet />
+
+
+      <Footer />
+
+
+    </div>
+
   )
 }
 

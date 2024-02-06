@@ -1,0 +1,72 @@
+.contenedor-imagenes {
+  position: relative;
+}
+
+.imagen-superpuesta {
+  position: absolute;
+  width: 30px;
+  height: auto;
+  top: 35 px;
+  /* Ajusta la posición según tus necesidades */
+  left: 70px;
+  /* Ajusta la posición según tus necesidades */
+  z-index: 2;
+  /* Capa superior */
+}
+
+.tarjetas-compromisos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  place-items: center;
+}
+
+.tarjetas-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 1rem;
+
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+}
+
+.compromiso {
+
+
+  p {
+    font-size: 13px;
+  }
+}
+
+.detalle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    height: 2px;
+  }
+
+}
+
+.modal-info {
+
+  .img {
+    width: auto;
+    height: auto;
+  }
+
+}
+
+.info {
+  font-size: 30px;
+
+  .titulo {
+    color: $color-principal;
+  }
+
+}
