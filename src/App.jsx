@@ -12,7 +12,7 @@ function App() {
     <div className='contenedor-general'>
 
       <NavbarLanus />
-      <p></p>
+    
 
       <Outlet />
 

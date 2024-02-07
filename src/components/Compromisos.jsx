@@ -20,8 +20,8 @@ const Compromisos = () => {
         ])
 
     const [compromisosFiltrados, setCompromisosFiltrados] = useState(null)
-    const [selectedAnio, setSelectedAnio] = useState(null)
-    console.log(selectedAnio)
+    const [selectedAnio, setSelectedAnio] = useState(2024)
+        console.log(selectedAnio)
     return (
         <div>
             <InfoHome />

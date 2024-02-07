@@ -11,8 +11,7 @@ const ModalCompromiso = (props) => {
     const cerrarModal = () => {
         props.handleclose();
     }
-    const now = 60;
-  
+    const now = props.compromiso.porcentaje;
 
     return (
         <Modal show={props.show} onHide={() => { cerrarModal() }} className="modal-info">
@@ -25,15 +24,17 @@ const ModalCompromiso = (props) => {
                         <img src={imagen} className="img" />
                     </Col>
                     <Col>
-                        <div className='info'>
+                        <div className='modal-info'>
                             <h1 className='titulo'>Lorem ipsum</h1>
                             <h1 className='texto'>Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum...</h1>
                         </div>
                     </Col>
                 </Row>
-                <Row>
-                    <label>Cumplido:</label>
-                    <ProgressBar now={now} label={`${now}%`} />
+                <Row >
+                    <label style={{fontSize:"20px"}}>Cumplido:</label>
+                    <Col>
+                        <ProgressBar variant={(now === 100) ? "success" : "primary"} now={now} label={`${now}%`} />
+                    </Col>
                 </Row>
 
 
@@ -42,8 +43,8 @@ const ModalCompromiso = (props) => {
                 <Button variant="secondary" onClick={() => { cerrarModal() }}>
                     Cerrar
                 </Button>
-                <Button variant="primary" onClick={cerrarModal}>
-                <Link to={`/compromiso/${props.compromiso.id}/anio/${props.anio}`} className="volver">Volver al inicio</Link>
+                <Button variant="primary" >
+                    <Link to={`/compromiso/${props.compromiso.id}/anio/${props.anio}`} className="volver">Ver más</Link>
                 </Button>
             </Modal.Footer>
         </Modal>
