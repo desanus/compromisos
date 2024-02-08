@@ -172,7 +172,7 @@ const ExploradorCompromisos = (props) => {
 
     return (
         <>
-            <Card >
+            <Card style={{border:"none"}} >
                 <Card.Body>
                     <Card.Title>Explorador de compromisos</Card.Title>
 

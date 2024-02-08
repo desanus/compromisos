@@ -3,8 +3,7 @@ import { useState } from 'react';
 import Filtros from './Filtros';
 import TarjetasCompromisos from './TarjetasCompromisos';
 import InfoHome from './InfoHome';
-import ModalCompromiso from './ModalCompromiso';
-
+import { Row, Col } from 'react-bootstrap';
 const Compromisos = () => {
 
     const [compromisos, setCompromisos] = useState(
@@ -21,15 +20,26 @@ const Compromisos = () => {
 
     const [compromisosFiltrados, setCompromisosFiltrados] = useState(null)
     const [selectedAnio, setSelectedAnio] = useState(2024)
-        console.log(selectedAnio)
+    console.log(selectedAnio)
     return (
         <div>
             <InfoHome />
             <p></p>
-            <Filtros compromisos={compromisos} handleCompromisos={setCompromisosFiltrados} setSelectedAnio={setSelectedAnio}/>
+            <Row>
+                <Col></Col>
+                <Col><hr></hr></Col>
+                <Col></Col>
+            </Row>
+
+            <Filtros compromisos={compromisos} handleCompromisos={setCompromisosFiltrados} setSelectedAnio={setSelectedAnio} />
             <p></p>
-            <TarjetasCompromisos compromisos={compromisosFiltrados} selectedAnio={selectedAnio}/>
-          
+            <Row>
+                <Col></Col>
+                <Col><hr></hr></Col>
+                <Col></Col>
+            </Row>
+            <TarjetasCompromisos compromisos={compromisosFiltrados} selectedAnio={selectedAnio} />
+
         </div>
     )
 }

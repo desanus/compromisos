@@ -6,7 +6,7 @@
   position: absolute;
   width: 30px;
   height: auto;
-  top: 35 px;
+  top: 70px;
   /* Ajusta la posición según tus necesidades */
   left: 70px;
   /* Ajusta la posición según tus necesidades */
@@ -59,10 +59,47 @@
     width: auto;
     height: auto;
   }
+
   font-size: 30px;
 
   .titulo {
     color: $color-principal;
   }
 
+}
+
+.compromiso .titulo {
+  font-size: 40px;
+  color: $color-principal;
+}
+.compromiso .titulo-metas{
+  color:$color-principal;
+  font-size: 30px;
+}
+.compromiso .porcentaje{
+  display: flex;
+  justify-content: center;
+}
+
+.titulo-plazo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-size: 23px;
+  }
+}
+
+.descripcion {
+  p {
+    font-size: 20px;
+
+  }
+}
+.diagnostico {
+  p {
+    font-size: 20px;
+
+  }
 }
