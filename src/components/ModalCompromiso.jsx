@@ -11,7 +11,10 @@ const ModalCompromiso = (props) => {
     const cerrarModal = () => {
         props.handleclose();
     }
-    const now = props.compromiso.porcentaje;
+    const now = props.porcentaje;
+    function eliminarContenidoHTML(texto) {
+        return texto.replace(/<[^>]+>/g, '');
+    }
 
     return (
         <Modal show={props.show} onHide={() => { cerrarModal() }} className="modal-info">
@@ -25,8 +28,8 @@ const ModalCompromiso = (props) => {
                     </Col>
                     <Col>
                         <div className='modal-info'>
-                            <h1 className='titulo'>Lorem ipsum</h1>
-                            <h1 className='texto'>Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum...</h1>
+                            <h1 className='titulo'>{props.compromiso.titulo}</h1>
+                            <h1 className='texto'>{eliminarContenidoHTML(props.compromiso.descripcion)}</h1>
                         </div>
                     </Col>
                 </Row>
