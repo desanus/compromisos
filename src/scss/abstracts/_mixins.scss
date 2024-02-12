@@ -4,6 +4,13 @@
     justify-content: center;
 }
 
+.botones-modal{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin-top: 20px;
+}
+
 .boton-hover {
     background-color: $color-principal;
     border-color: $color-principal;
@@ -25,22 +32,24 @@
 
 
 
-.input-filter{
+.input-filter {
     font-size: 15px;
 }
-.row-filtros{
+
+.row-filtros {
     margin-bottom: 20px;
 }
 
-.filter-busqueda-input{
+.filter-busqueda-input {
     font-size: auto;
-    
+
 }
 
-.filter-input-dropdown{
+.filter-input-dropdown {
     width: auto;
 }
-.filter-radio-buttons{
+
+.filter-radio-buttons {
     display: inline-flex;
     font-size: auto;
     width: auto;
@@ -48,10 +57,20 @@
 }
 
 
-.navbar{
+.navbar {
     background-color: $color-principal;
-    color:white;
+    color: white;
 }
 
+.bagde-area {
 
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: $color-principal;
+    color: white;
+    font-weight: bold;
+    font-size: 0.7em;
+    display: inline-block;
+    margin-right: 4px;
 
+}

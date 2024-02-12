@@ -181,14 +181,14 @@ const ExploradorCompromisos = (props) => {
                         <label> Filtrá por área</label>
                         <Col className="columna-filtro">
                             {botones && botones.map((boton) => (
-                                <Badge
+                                <span 
                                     key={boton.id}
                                     bg={boton.id === checkedIndex ? "success" : "primary"}
-                                    className="boton-hover"
+                                    className="boton-hover bagde-area"
                                     onClick={() => handleButtonClick(boton.id)}
                                 >
                                     {boton.nombre}
-                                </Badge>
+                                </span>
                             ))}
                         </Col>
                     </Row>
@@ -197,14 +197,14 @@ const ExploradorCompromisos = (props) => {
 
                         <Col className="columna-filtro">
                             {ejes && ejes.map((eje) => (
-                                <Badge
+                                <span
                                     key={eje.id}
                                     bg={eje.id === checkedIndexEje ? "success" : "primary"}
-                                    className="boton-hover"
+                                    className="boton-hover bagde-area"
                                     onClick={() => handleButtonEjes(eje.id)}
                                 >
                                     {eje.nombre}
-                                </Badge>
+                                </span>
                             ))}
                         </Col>
                     </Row>

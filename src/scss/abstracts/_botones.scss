@@ -1,0 +1,54 @@
+/* Estilos para el botón */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: $color-principal; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto del botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+  }
+  
+  /* Estilos para el botón cuando se pasa el ratón por encima */
+  .button:hover {
+    background-color: white;
+    color: $color-principal /* Nuevo color de fondo del botón al pasar el ratón por encima */
+  }
+  
+  .button:active {
+    background-color : white; /* Nuevo color de fondo del botón al estar presionado */
+  }
+
+
+   .button-cerrar:hover {
+    background-color: white;
+    color: #808080/* Nuevo color de fondo del botón al pasar el ratón por encima */
+  }
+  
+  /* Estilos para el botón cuando está presionado */
+  .button-cerrar:active {
+    background-color : white; /* Nuevo color de fondo del botón al estar presionado */
+  }
+  
+  
+  .button-cerrar {
+    margin-right: 5px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #808080; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto del botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+  }
+  

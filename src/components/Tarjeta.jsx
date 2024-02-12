@@ -17,12 +17,12 @@ const Tarjeta = (props) => {
         setShow(true)
     };
 
-    
-    const calcularPorcentaje = () =>{
+
+    const calcularPorcentaje = () => {
         let sumaPeso = 0;
         props.compromiso.etapas && props.compromiso.etapas.forEach(etapa => {
             if (etapa.completo === 1) {
-            sumaPeso += etapa.peso;
+                sumaPeso += etapa.peso;
             }
         });
         return sumaPeso
@@ -30,14 +30,14 @@ const Tarjeta = (props) => {
 
 
     return (
+        <>
+        
         <motion.div className='compromiso'
             key={props.compromiso.idCompromiso}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            layout
-
-        >
+            layout>
             <div onClick={handleShow}>
                 <div className="contenedor-imagenes" >
                     <img src={imagen} alt="Red Image" className='tarjetas-img' />
@@ -53,9 +53,12 @@ const Tarjeta = (props) => {
                     <p>{calcularPorcentaje()}%</p>
                 </div>
             </div>
-            <ModalCompromiso show={show} handleclose={handleClose} porcentaje={calcularPorcentaje()} compromiso={props.compromiso} anio={props.selectedAnio} />
 
         </motion.div >
+        <ModalCompromiso show={show} handleclose={handleClose} porcentaje={calcularPorcentaje()} compromiso={props.compromiso} anio={props.selectedAnio} />
+
+        </>
+
     )
 }
 
