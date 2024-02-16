@@ -17,6 +17,7 @@ const Tarjeta = (props) => {
         setShow(true)
     };
 
+    const [icono,setIcono] = useState(`http://sigem.lanus.gob.ar/compromisos/iconos/${props.compromiso.iconos[0].iconoA}`)
 
     const calcularPorcentaje = () => {
         let sumaPeso = 0;
@@ -28,7 +29,7 @@ const Tarjeta = (props) => {
         return sumaPeso
     }
 
-
+    console.log(icono)
     return (
         <>
         
@@ -40,7 +41,7 @@ const Tarjeta = (props) => {
             layout>
             <div onClick={handleShow}>
                 <div className="contenedor-imagenes" >
-                    <img src={imagen} alt="Red Image" className='tarjetas-img' />
+                    <img src={icono} alt="Red Image" className='tarjetas-img' />
                     {(props.compromiso.porcentaje === 100) ?
                         <img className="imagen-superpuesta" src={completo} alt="Imagen superpuesta" /> : <></>
                     }
