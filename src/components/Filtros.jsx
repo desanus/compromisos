@@ -192,14 +192,13 @@ const ExploradorCompromisos = (props) => {
                         <label style={{ marginBottom: "10px" }}> Filtrá por área:</label>
                         <Col className="columna-filtro">
                             {botones && botones.map((boton) => (
-                                <Button
+                                <span
                                     key={boton.id}
-                                    variant={boton.id === checkedIndex ? "success" : "primary"}
-                                    // className="boton-hover bagde-area"
+                                    className={`boton-hover bagde-area ${boton.id === checkedIndex ? "seleccionado" : ""}`}
                                     onClick={() => handleButtonClick(boton.id)}
                                 >
                                     {boton.nombre}
-                                </Button>
+                                </span>
                             ))}
                         </Col>
                     </Row>
@@ -210,8 +209,9 @@ const ExploradorCompromisos = (props) => {
                             {ejes && ejes.map((eje) => (
                                 <span
                                     key={eje.id}
-                                    bg={eje.id === checkedIndexEje ? "success" : "primary"}
-                                    className="boton-hover bagde-area"
+                                  
+                                    className={`boton-hover bagde-area ${eje.id === checkedIndexEje ? "seleccionado" : ""}`}
+
                                     onClick={() => handleButtonEjes(eje.id)}
                                 >
                                     {eje.nombre}

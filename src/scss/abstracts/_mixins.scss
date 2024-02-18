@@ -21,15 +21,18 @@
     margin-right: 5px;
 
     &:hover {
-        background-color: darken($color-principal, 10%); // Cambia el color al hacer hover
+        background-color: darken($color-principal, 10%);
     }
 
-    &:active {
-        background-color: darken($color-principal, 20%); // Cambia el color al hacer clic
+    &:active,
+    &.seleccionado:active {
+        background-color: darken($color-principal, 30%);
     }
 
+    &.seleccionado {
+        background-color: darken($color-principal, 20%);
+    }
 }
-
 
 
 .input-filter {
@@ -69,7 +72,20 @@
     background-color: $color-principal;
     color: white;
     font-weight: bold;
-    font-size: 0.6em;
+    font-size: 0.7em;
+    display: inline-block;
+    margin-right: 4px;
+
+}
+
+.bagde-area-seleccionado {
+
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    font-size: 0.7em;
     display: inline-block;
     margin-right: 4px;
 
