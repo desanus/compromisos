@@ -15,7 +15,7 @@ const Compromisos = () => {
         fetch('https://sigem.lanus.gob.ar:8989/api/compromisos')
             .then(response => response.json())
             .then(data => {setCompromisos(data.compromisos)
-                            setCompromisosPorAnio(data.compromisos)}
+                           setCompromisosPorAnio(data.compromisos)}
              )
             .catch(error => console.error('Error fetching data:', error));
     }, []);
@@ -29,7 +29,7 @@ const Compromisos = () => {
         setSelectedAnio(selectedAnio)
         if (selectedAnio === 0) {
             // Si el valor seleccionado es 0, mostrar todos los compromisos
-            props.handleCompromisos(props.compromisos);
+            setCompromisosPorAnio(compromisos);
           } else {
             // Filtrar compromisos por el año presente en alguna de sus etapas
             const comp = compromisos.filter((compromiso) => {
@@ -41,7 +41,6 @@ const Compromisos = () => {
           }
 
     }
-
 
     return (
         <div>
@@ -56,9 +55,9 @@ const Compromisos = () => {
             <Filtros compromisos={compromisosPorAnio} handleCompromisos={setCompromisosFiltrados} setSelectedAnio={handleAnioChange} />
             <p></p>
             <Row>
-                <Col></Col>
+              
                 <Col><hr></hr></Col>
-                <Col></Col>
+             
             </Row>
             <TarjetasCompromisos compromisos={compromisosFiltrados} selectedAnio={selectedAnio} />
 

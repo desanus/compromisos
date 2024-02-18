@@ -1,14 +1,17 @@
 .contenedor-imagenes {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .imagen-superpuesta {
   position: absolute;
   width: 30px;
   height: auto;
-  top: 70px;
+  top: 80px;
   /* Ajusta la posición según tus necesidades */
-  left: 70px;
+  left: 130px;
   /* Ajusta la posición según tus necesidades */
   z-index: 2;
   /* Capa superior */
@@ -46,7 +49,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: auto;
   p {
     height: 2px;
   }
@@ -102,4 +105,11 @@
     font-size: 20px;
 
   }
+}
+.progress-bar {  // this is for the bar itself
+  background-color: #4AA69F;
+}
+
+.glow{
+  color:$color-principal;
 }

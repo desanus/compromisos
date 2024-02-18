@@ -6,8 +6,8 @@
 
 .botones-modal{
     display: flex;
-    align-items: right;
-    justify-content: right;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
 }
 
@@ -69,7 +69,7 @@
     background-color: $color-principal;
     color: white;
     font-weight: bold;
-    font-size: 0.7em;
+    font-size: 0.6em;
     display: inline-block;
     margin-right: 4px;
 

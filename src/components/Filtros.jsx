@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 
 import Form from 'react-bootstrap/Form';
 
 const ExploradorCompromisos = (props) => {
-  
+
     const [checkedIndex, setCheckedIndex] = useState(null);
     const [checkedIndexEje, setCheckedIndexEje] = useState(null);
-
-
+    const [areaElegida, setAreaElegida] = useState(null)
+    const [ejeElegido, setEjeElegido] = useState(null)
+    const [compromisos, setCompromisos] = useState(null)
+    const [plazoElegido,setPlazoElegido] = useState(null)
+    const [busqueda, setbusqueda] = useState('');
     const [botones, setBotones] = useState([]);
+    const [checkboxValue, setCheckboxValue] = useState('');
 
     useEffect(() => {
         fetch('https://sigem.lanus.gob.ar:8989/api/areas')
@@ -28,34 +32,87 @@ const ExploradorCompromisos = (props) => {
             .then(data => setEjes(data.ejes))
             .catch(error => console.error('Error fetching data:', error));
     }, []);
-   
-    
+
 
     useEffect(() => {
-        props.handleCompromisos(props.compromisos)
+        setCompromisos(props.compromisos)
+        props.handleCompromisos(aplicarFiltros())
     }, [props.compromisos])
 
-    const handleButtonClick = (index) => {
-        setCheckedIndex(index === checkedIndex ? null : index);
-      
-        const comp = props.compromisos.filter((compromiso) => {
-          return compromiso.areas && compromiso.areas.some((area) => area.idArea === index);
+
+    const aplicarFiltros = () => {
+
+        let compromisosFiltrados = props.compromisos
+        console.log(compromisos)
+        if (areaElegida !== null) {
+            compromisosFiltrados = filtrarArea(compromisosFiltrados)
+        }
+        if (ejeElegido !== null) {
+            compromisosFiltrados = filtrarEjes(compromisosFiltrados)
+        }
+        if (plazoElegido !== null) {
+            compromisosFiltrados = filtrarPlazo(compromisosFiltrados)
+        }
+        return compromisosFiltrados;
+
+
+    }
+
+
+    const filtrarArea = (filtrar) => {
+
+        const comp = filtrar.filter((compromiso) => {
+            return compromiso.areas && compromiso.areas.some((area) => area.idArea === areaElegida);
         });
-        props.handleCompromisos(comp);
-      };
-      
+        return comp
+    }
+
+    const filtrarEjes = (filtrar) => {
+
+        const comp = filtrar.filter((compromiso) => {
+            return compromiso.ejes && compromiso.ejes.some((eje) => eje.idEje === ejeElegido);
+        });
+        return comp
+    }
+
+    const filtrarPlazo = (filtrar) => {
+        const comp = filtrar.filter((compromiso) => {
+            return parseInt(compromiso.plazo) === plazoElegido;
+        });
+        return comp
+    }
+
+    useEffect(() => {
+
+        props.handleCompromisos(aplicarFiltros())
+    }, [areaElegida])
+
+    useEffect(() => {
+        props.handleCompromisos(aplicarFiltros())
+
+    }, [ejeElegido])
+
+    useEffect(() => {
+
+        props.handleCompromisos(aplicarFiltros())
+    }, [plazoElegido])
+
+    const handleButtonClick = (index) => {
+        setAreaElegida(index === checkedIndex ? null : index)
+        setCheckedIndex(index === checkedIndex ? null : index);
+    };
+
 
     const handleButtonEjes = (index) => {
         setCheckedIndexEje(index === checkedIndexEje ? null : index);
-      
-        const comp = props.compromisos.filter((compromiso) => {
-          return compromiso.ejes && compromiso.ejes.some((eje) => eje.idEje === index);
-        });
-        props.handleCompromisos(comp);
-      };
-      
+        setEjeElegido(index === checkedIndexEje ? null : index)
+    };
 
-    const [busqueda, setbusqueda] = useState('');
+    const handlePlazoChange = (event) => {
+        let plazo = parseInt(event.target.value, 10)
+        setPlazoElegido(plazo === 0 ? null : plazo)
+
+    };
 
     const handleInputChange = (event) => {
         const busqueda = event.target.value;
@@ -73,61 +130,14 @@ const ExploradorCompromisos = (props) => {
         props.handleCompromisos(comp);
     };
 
-    const handleLocalidadChange = (event) => {
-        const selectedLocalidad = parseInt(event.target.value);
-      
-        if (selectedLocalidad === 0) {
-            // Si el valor seleccionado es 0, mostrar todos los compromisos
-            props.handleCompromisos(props.compromisos);
-        } else {
-            // Filtrar compromisos por el año seleccionado
-            const comp = props.compromisos.filter((compromiso) => {
-                return compromiso.localidad === selectedLocalidad;
-            });
-
-            // Actualizar el estado de compromisos con el resultado del filtro por año
-            props.handleCompromisos(comp);
-        }
-    }
-
     const handleAnioChange = (event) => {
         const selectedAnio = parseInt(event.target.value, 10);
         props.setSelectedAnio(selectedAnio);
-      
-        
-        // if (selectedAnio === 0) {
-        //   // Si el valor seleccionado es 0, mostrar todos los compromisos
-        //   props.handleCompromisos(props.compromisos);
-        // } else {
-        //   // Filtrar compromisos por el año presente en alguna de sus etapas
-        //   const comp = props.compromisos.filter((compromiso) => {
-        //     return compromiso.etapas && compromiso.etapas.some((etapa) => etapa.anio === selectedAnio);
-        //   });
-      
-        //   // Actualizar el estado de compromisos con el resultado del filtro por año
-        //   props.handleCompromisos(comp);
-        // }
-      };
-      
-
-    const handlePlazoChange = (event) => {
-        const selectedPlazo = parseInt(event.target.value, 10);
-
-        if (selectedPlazo === 0) {
-            // Si el valor seleccionado es 0, mostrar todos los compromisos
-            props.handleCompromisos(props.compromisos);
-        } else {
-            // Filtrar compromisos por el año seleccionado
-            const comp = props.compromisos.filter((compromiso) => {
-                return parseInt(compromiso.plazo) === selectedPlazo;
-            });
-
-            // Actualizar el estado de compromisos con el resultado del filtro por año
-            props.handleCompromisos(comp);
-        }
     };
 
-    const [checkboxValue, setCheckboxValue] = useState('');
+
+
+
 
     const filtrarPorcentaje = (piso, techo) => {
 
@@ -135,12 +145,13 @@ const ExploradorCompromisos = (props) => {
             // Ajusta los números según tus necesidades
             const rangoInicio = piso;
             const rangoFin = techo;
-     
+
             // Filtra compromisos con porcentaje en el rango especificado
             return compromiso.porcentaje >= rangoInicio && compromiso.porcentaje <= rangoFin;
         });
         return comp;
     }
+
     const handleCheckboxChange = (event) => {
         const value = event.target.value;
         // Si la checkbox seleccionada es la misma que ya estaba seleccionada, deselecciónala
@@ -173,27 +184,27 @@ const ExploradorCompromisos = (props) => {
 
     return (
         <>
-            <Card style={{border:"none"}} >
+            <Card style={{ border: "none" }} >
                 <Card.Body>
-                    <Card.Title>Explorador de compromisos</Card.Title>
+                    <Card.Title style={{ fontSize: "30px" }}>Explorador de compromisos</Card.Title>
 
                     <Row className='row-filtros'>
-                        <label> Filtrá por área</label>
+                        <label style={{ marginBottom: "10px" }}> Filtrá por área:</label>
                         <Col className="columna-filtro">
                             {botones && botones.map((boton) => (
-                                <span 
+                                <Button
                                     key={boton.id}
-                                    bg={boton.id === checkedIndex ? "success" : "primary"}
-                                    className="boton-hover bagde-area"
+                                    variant={boton.id === checkedIndex ? "success" : "primary"}
+                                    // className="boton-hover bagde-area"
                                     onClick={() => handleButtonClick(boton.id)}
                                 >
                                     {boton.nombre}
-                                </span>
+                                </Button>
                             ))}
                         </Col>
                     </Row>
                     <Row className='row-filtros'>
-                        <label> Filtrá por eje temático</label>
+                        <label style={{ marginBottom: "10px" }}> Filtrá por eje temático</label>
 
                         <Col className="columna-filtro">
                             {ejes && ejes.map((eje) => (
@@ -215,8 +226,8 @@ const ExploradorCompromisos = (props) => {
 
                             <Form.Group className="mb-3">
                                 <Form.Label className='input-filter'>Buscá por año:</Form.Label>
-                                <Form.Select onChange={handleAnioChange} className='filter-input-dropdown' defaultValue={2024}>
-
+                                <Form.Select onChange={handleAnioChange} className='filter-input-dropdown' defaultValue={0}>
+                                    <option value={0}>Todos los años</option>
                                     <option value={2024}>2024</option>
                                     <option value={2025}>2025</option>
                                     <option value={2026}>2026</option>
@@ -243,12 +254,11 @@ const ExploradorCompromisos = (props) => {
 
                             <Form.Group className="mb-3">
                                 <Form.Label className='input-filter'>Buscá por plazo:</Form.Label>
-                                <Form.Select onChange={handlePlazoChange} className='filter-input-dropdown' defaultValue={1}>
-
+                                <Form.Select onChange={handlePlazoChange} className='filter-input-dropdown' defaultValue={0}>
+                                    <option value={0}> Todos</option>
                                     <option value={1}>Corto plazo</option>
                                     <option value={2}>Mediano plazo</option>
                                     <option value={3}>Largo plazo</option>
-
                                 </Form.Select>
                             </Form.Group>
                         </Col>

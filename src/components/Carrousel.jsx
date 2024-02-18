@@ -37,7 +37,7 @@ const Carrousel = (props) => {
                             <SwiperSlide key={index}>
                                 {({ isActive }) => (
                                     <div className={isActive ? 'swiper-slide-active' : 'inactive-slide'}>
-                                        <img src={`http://sigem.lanus.gob.ar/compromisos/fotos/${foto.foto}`} />
+                                        <img src={`https://sigem.lanus.gob.ar/compromisos/fotos/${foto.foto}`} />
                                     </div>
                                 )}
                             </SwiperSlide>
