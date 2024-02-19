@@ -66,6 +66,69 @@ const Compromiso = () => {
             <ProgressBar now={calcularPorcentaje(compromiso)} visuallyHidden style={{ height: "3px" }} />
             <p></p>
             <Container className='compromiso'>
+
+
+
+                <Row>
+                    <Col md={8}>
+
+                    </Col>
+
+                    <Col className='columna'>
+
+                        <Row>
+                            <Col className='columna'>
+                                {compromiso.areas && compromiso.areas.map((area, index) => {
+                                    return <span key={index} className="bagde-area">{area.nombre}</span>
+
+                                })}
+
+                            </Col>
+                        </Row>
+                        <Row >
+                            <Col className='columna'>
+                                {compromiso.ejes && compromiso.ejes.map((eje, index) => {
+                                    return <span key={index} className="bagde-area">{eje.nombre}</span>
+
+                                })}
+
+                            </Col>
+                        </Row>
+                    </Col>
+
+                </Row>
+
+                {(compromiso.graficos) ?
+                    <Row style={{ marginTop: "20px", marginBottom:"30px" }}>
+                        <Col>
+                            
+                            {(loading) ?
+
+                                <Col>
+                                    <Placeholder as="p" animation="glow" className="glow">
+                                        <Placeholder md={4} />
+                                    </Placeholder>
+                                </Col>
+                                :
+                                <Col>
+                                <Row style={{marginBottom:"30px"}}>
+                                  <h1 className='titulo'>AGREGAR ALGUN TITULO</h1>
+                            
+                                </Row>
+                                   <Row>
+                                    
+                                    {compromiso.graficos.map((grafico)=>{
+                                        return <Col className='columna'> <img style={{width:"auto", height:"40vh"}} src={`https://sigem.lanus.gob.ar/compromisos/graficos/${grafico.grafico}`}></img></Col>
+                                    })}
+                                    </Row>    
+                                </Col>
+
+
+                            }
+                        </Col>
+                    </Row>
+                    :
+                    <></>}
                 <Row>
                     <Col md={8}>
                         {(loading) ?
@@ -83,30 +146,9 @@ const Compromiso = () => {
 
                         }
                     </Col>
-                    <Col></Col>
-                    <Col>
-
-                        <Row>
-                            <Col className='columna'>
-                                {compromiso.areas && compromiso.areas.map((area, index) => {
-                                    return <span key={index} className="bagde-area">{area.nombre}</span>
-
-                                })}
-
-                            </Col>
-                        </Row>
-                        <Row style={{ marginTop: "4px" }}>
-                            <Col className='columna'>
-                                {compromiso.ejes && compromiso.ejes.map((eje, index) => {
-                                    return <span key={index} className="bagde-area">{eje.nombre}</span>
-
-                                })}
-
-                            </Col>
-                        </Row>
-                    </Col>
 
                 </Row>
+
                 <Row>
                     {(loading) ?
                         <Col>

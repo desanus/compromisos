@@ -186,6 +186,7 @@ const ExploradorCompromisos = (props) => {
             <Card style={{ border: "none" }} >
                 <Card.Body>
                     <Card.Title style={{ fontSize: "30px" }}>Explorador de compromisos</Card.Title>
+                    <Card.Title ><p>Elegí el año y buscá los compromisos por área, eje temático ó bien podés buscar por palabra clave.</p></Card.Title>
 
                     <Row className='row-filtros'>
                         <label style={{ marginBottom: "10px" }}> Filtrá por área:</label>

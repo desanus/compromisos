@@ -48,8 +48,8 @@ const Compromisos = () => {
         }
 
     }
-    
-   
+
+
     return (
         <div>
             <InfoHome />
@@ -69,7 +69,7 @@ const Compromisos = () => {
                     id="fill-tab-example"
                     className="mb-3"
                     fill
-                    onSelect={()=>{setMapaActivo(true)}}
+                    onSelect={() => { setMapaActivo(true) }}
                 >
                     <Tab eventKey={1} title="Compromisos">
                         <TarjetasCompromisos compromisos={compromisosFiltrados} selectedAnio={selectedAnio} />
@@ -78,14 +78,14 @@ const Compromisos = () => {
                     <Tab eventKey={2} title="Mapa" >
                         <div >
 
-                        <Mapa compromisos={compromisosFiltrados} showmapa={mapaActivo}/>
+                            <Mapa compromisos={compromisosFiltrados} showmapa={mapaActivo} />
 
                         </div>
 
                     </Tab>
 
                 </Tabs>
-               
+
             </div>
 
 
