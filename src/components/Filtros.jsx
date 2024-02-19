@@ -43,7 +43,6 @@ const ExploradorCompromisos = (props) => {
     const aplicarFiltros = () => {
 
         let compromisosFiltrados = props.compromisos
-        console.log(compromisos)
         if (areaElegida !== null) {
             compromisosFiltrados = filtrarArea(compromisosFiltrados)
         }
