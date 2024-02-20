@@ -98,37 +98,7 @@ const Compromiso = () => {
 
                 </Row>
 
-                {(compromiso.graficos) ?
-                    <Row style={{ marginTop: "20px", marginBottom:"30px" }}>
-                        <Col>
-                            
-                            {(loading) ?
-
-                                <Col>
-                                    <Placeholder as="p" animation="glow" className="glow">
-                                        <Placeholder md={4} />
-                                    </Placeholder>
-                                </Col>
-                                :
-                                <Col>
-                                <Row style={{marginBottom:"30px"}}>
-                                  <h1 className='titulo'>AGREGAR ALGUN TITULO</h1>
-                            
-                                </Row>
-                                   <Row>
-                                    
-                                    {compromiso.graficos.map((grafico)=>{
-                                        return <Col className='columna'> <img style={{width:"auto", height:"40vh"}} src={`https://sigem.lanus.gob.ar/compromisos/graficos/${grafico.grafico}`}></img></Col>
-                                    })}
-                                    </Row>    
-                                </Col>
-
-
-                            }
-                        </Col>
-                    </Row>
-                    :
-                    <></>}
+            
                 <Row>
                     <Col md={8}>
                         {(loading) ?
@@ -205,6 +175,8 @@ const Compromiso = () => {
                         </Col>
                     }
                 </Row>
+
+                
                 <Row>
                     <Col></Col>
                     <Col><hr></hr></Col>
@@ -229,6 +201,38 @@ const Compromiso = () => {
 
 
                 </Row>
+
+                {(compromiso.graficos) ?
+                    <Row style={{ marginTop: "20px", marginBottom:"30px" }}>
+                        <Col>
+                            
+                            {(loading) ?
+
+                                <Col>
+                                    <Placeholder as="p" animation="glow" className="glow">
+                                        <Placeholder md={4} />
+                                    </Placeholder>
+                                </Col>
+                                :
+                                <Col>
+                                <Row style={{marginBottom:"30px"}}>
+                                  <h1 className='titulo'>AGREGAR ALGUN TITULO</h1>
+                            
+                                </Row>
+                                   <Row>
+                                    
+                                    {compromiso.graficos.map((grafico)=>{
+                                        return <Col className='columna'> <img style={{width:"auto", height:"40vh"}} src={`https://sigem.lanus.gob.ar/compromisos/graficos/${grafico.grafico}`}></img></Col>
+                                    })}
+                                    </Row>    
+                                </Col>
+
+
+                            }
+                        </Col>
+                    </Row>
+                    :
+                    <></>}
                 <Row>
                     <br></br>
                     <br></br>
@@ -252,7 +256,7 @@ const Compromiso = () => {
 
                 </Row>
 
-                <Row>
+                <Row style={{fontSize:"20px"}}>
                     {(compromiso.etapas) ? <Checklist etapas={compromiso.etapas} /> : <></>}
 
                 </Row>

@@ -9,8 +9,8 @@ const Checklist = (props) => {
     return (
         <ul>
             {props.etapas.map(item => (
-                <li key={item.id} style={{ fontSize: "20px", }} >
-                    <div style={{marginTop:"10px"}}>
+                <li key={item.id} >
+                    <div >
                      
                     {item.completo === 1 ? (
                         <>  <FontAwesomeIcon icon={faCheckCircle} style={{ color: 'green' }} /> {item.detalle}</>

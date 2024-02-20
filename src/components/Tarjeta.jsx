@@ -35,20 +35,22 @@ const Tarjeta = (props) => {
 
     }, []);
 
-    
+
 
 
     return (
         <>
 
-            <motion.div className='compromiso'
+            <motion.div
+                onClick={handleShow}
                 key={props.compromiso.idCompromiso}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 layout>
-                <Row style={{ marginBottom: "20px" }}>
-                    <div onClick={handleShow}>
+                <Row style={{ marginBottom: "20px", textAlign: "center" }} >
+                    <Col>
+
                         <div className="contenedor-imagenes" >
                             <img src={icono} alt={props.compromiso.titulo} className='tarjetas-img' />
                             {(calcularPorcentaje() === 100) ?
@@ -56,23 +58,16 @@ const Tarjeta = (props) => {
                             }
                         </div>
 
+                        <div style={{ marginTop: "10px", marginBottom: "10px", textAlign:"center" }}> {/* Contenedor para ambos h4 */}
+                            <h4>{props.compromiso.titulo}</h4>
+                            <h4>{calcularPorcentaje()}%</h4>
+                        </div>
 
-                    </div>
-                </Row>
-
-                <Row>
-                    <Col className='columna'>
-                        <p>{props.compromiso.titulo}</p>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className='columna'>
-                        <p>{calcularPorcentaje()}%</p>
 
                     </Col>
 
-
                 </Row>
+
             </motion.div >
             <ModalCompromiso show={show} handleclose={handleClose} porcentaje={calcularPorcentaje()} compromiso={props.compromiso} anio={props.selectedAnio} />
 

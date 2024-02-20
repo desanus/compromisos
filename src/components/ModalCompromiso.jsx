@@ -36,9 +36,12 @@ const ModalCompromiso = (props) => {
         }
     }
     return (
-        <Modal show={props.show} onHide={() => { cerrarModal() }} className="modal-info" size="xl" centered>
+        <Modal show={props.show} onHide={() => { cerrarModal() }} className="modal-info" size="xl" centered >
 
-            <Modal.Body style={{ margin: "30px" }}>
+         
+            <Modal.Body style={{ margin: "30px", marginTop:"0px" }} >
+
+
                 <Row>
                     <Col>
                         <Row style={{ marginTop: "20px" }}>
@@ -52,27 +55,25 @@ const ModalCompromiso = (props) => {
                                         <h1 className='texto'>{limitarTexto(eliminarContenidoHTML(props.compromiso.descripcion), 300)}</h1>
                                     </div>
                                 </Row>
-                                <Row>
+
+                                <Row style={{ marginTop: "40px" }}>
                                     <label style={{ fontSize: "20px" }}>ESTADO DEL COMPROMISO:</label>
 
-                                    <Row>
+                                    <Row style={{ fontSize: "15px" }}>
                                         {(props.compromiso.etapas) ? <Checklist etapas={props.compromiso.etapas} /> : <></>}
 
                                     </Row>
                                 </Row>
 
+                                <Row>
+                                    <Col>
+                                        <ProgressBar variant={(now === 100) ? "success" : "primary"} now={now} label={`${now}%`} />
+                                    </Col>
+                                </Row>
 
                             </Col>
                         </Row>
 
-                        <Row >
-                          
-                            <Col>
-                            <br></br>
-                            <label style={{ fontSize: "20px" }}>Cumplido:</label>
-                                <ProgressBar className='progress-bar' variant={(now === 100) ? "success" : "primary"} now={now} label={`${now}%`} />
-                            </Col>
-                        </Row>
                         <Row>
                             <Col className='botones-modal'>
                                 <button variant="primary" className='button' >

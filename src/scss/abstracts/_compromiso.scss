@@ -3,6 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
 }
 
 .imagen-superpuesta {
@@ -113,3 +116,4 @@
 .glow{
   color:$color-principal;
 }
+

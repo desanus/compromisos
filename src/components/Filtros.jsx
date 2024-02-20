@@ -12,8 +12,10 @@ const ExploradorCompromisos = (props) => {
     const [areaElegida, setAreaElegida] = useState(null)
     const [ejeElegido, setEjeElegido] = useState(null)
     const [compromisos, setCompromisos] = useState(null)
-    const [plazoElegido,setPlazoElegido] = useState(null)
-    const [busqueda, setbusqueda] = useState('');
+    const [plazoElegido, setPlazoElegido] = useState(null)
+    const [palabraElegida, setPalabraElegida] = useState('');
+
+
     const [botones, setBotones] = useState([]);
     const [checkboxValue, setCheckboxValue] = useState('');
 
@@ -51,6 +53,10 @@ const ExploradorCompromisos = (props) => {
         }
         if (plazoElegido !== null) {
             compromisosFiltrados = filtrarPlazo(compromisosFiltrados)
+        }
+        if (palabraElegida !== '') {
+            compromisosFiltrados = filtrarPalabra(compromisosFiltrados)
+            console.log("filtrados: ", compromisosFiltrados)
         }
         return compromisosFiltrados;
 
@@ -96,6 +102,12 @@ const ExploradorCompromisos = (props) => {
         props.handleCompromisos(aplicarFiltros())
     }, [plazoElegido])
 
+    useEffect(() => {
+
+        props.handleCompromisos(aplicarFiltros())
+    }, [palabraElegida])
+
+
     const handleButtonClick = (index) => {
         setAreaElegida(index === checkedIndex ? null : index)
         setCheckedIndex(index === checkedIndex ? null : index);
@@ -115,28 +127,44 @@ const ExploradorCompromisos = (props) => {
 
     const handleInputChange = (event) => {
         const busqueda = event.target.value;
-        // Llama a tu función de filtro con el valor actual del input
-        buscarPorPalabra(busqueda);
-        // Actualiza el estado para guardar el valor del input
-        setbusqueda(busqueda);
+        setPalabraElegida(busqueda === palabraElegida ? '' : busqueda);
     };
 
-    const buscarPorPalabra = (busqueda) => {
-        // Filtrar compromisos por el campo "nombre"
-        const comp = props.compromisos.filter((compromiso) => {
-            return compromiso.nombre.toLowerCase().includes(busqueda.toLowerCase());
-        });
-        props.handleCompromisos(comp);
-    };
+
+    const filtrarPalabra = (filtrar) => {
+        console.log(palabraElegida.length)
+        if (palabraElegida.length > 2) {
+
+
+            const comp = filtrar.filter((compromiso) => {
+                // Filtrar compromisos que contengan la palabraBuscada en sus tags
+                return compromiso.tags.some(tag => tag.tag.includes(palabraElegida));
+            }).reduce((result, compromiso) => {
+                // Utilizar reduce para devolver solo un resultado por idCompromiso
+                if (!result.some(comp => comp.idCompromiso === compromiso.idCompromiso)) {
+                    result.push(compromiso);
+                }
+                return result;
+            }, []);
+            return comp;
+        }else {
+            return filtrar
+        }
+    }
+
+
+    // const buscarPorPalabra = (busqueda) => {
+    //     // Filtrar compromisos por el campo "nombre"
+    //     const comp = props.compromisos.filter((compromiso) => {
+    //         return compromiso.nombre.toLowerCase().includes(busqueda.toLowerCase());
+    //     });
+    //     props.handleCompromisos(comp);
+    // };
 
     const handleAnioChange = (event) => {
         const selectedAnio = parseInt(event.target.value, 10);
         props.setSelectedAnio(selectedAnio);
     };
-
-
-
-
 
     const filtrarPorcentaje = (piso, techo) => {
 
@@ -209,7 +237,7 @@ const ExploradorCompromisos = (props) => {
                             {ejes && ejes.map((eje) => (
                                 <span
                                     key={eje.id}
-                                  
+
                                     className={`boton-hover bagde-area ${eje.id === checkedIndexEje ? "seleccionado" : ""}`}
 
                                     onClick={() => handleButtonEjes(eje.id)}
@@ -243,7 +271,7 @@ const ExploradorCompromisos = (props) => {
                                         className='filter-busqueda-input'
                                         type="text"
                                         placeholder="ingresá al menos 3 caracteres"
-                                        value={busqueda}
+                                        value={palabraElegida}
                                         onChange={handleInputChange}
                                     />
                                 </Form.Group>
