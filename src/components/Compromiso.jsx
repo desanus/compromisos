@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Badge from 'react-bootstrap/Badge';
 import Checklist from './Checklist';
 import Placeholder from 'react-bootstrap/Placeholder';
+import BotonVolver from './BotonVolver';
 
 
 
@@ -184,7 +185,7 @@ const Compromiso = () => {
 
 
                 <Row>
-                    <h1 className='titulo' style={{ marginTop: "50px", fontSize:"28px" }}> ¿Por qué lo asumimos? </h1>
+                    <h1 className='titulo' style={{ marginTop: "10px", fontSize:"28px" }}> ¿Por qué lo asumimos? </h1>
                 </Row>
                 <Row className='diagnostico'>
 
@@ -247,11 +248,7 @@ const Compromiso = () => {
                     <Carrousel fotos={compromiso.fotos} /> : <></>
                 }
 
-                <Row>
-                    <br></br>
-                    <br></br>
-                    <br></br>
-                </Row>
+              
                 <Row>
 
                     <Col>
@@ -267,11 +264,16 @@ const Compromiso = () => {
                 </Row>
 
                 <Row>
+                    <Col className="columna">
+                        <BotonVolver/>
+                    </Col>
+                </Row>
+
+                <Row>
                     <Col></Col>
                     <Col><hr></hr></Col>
                     <Col></Col>
                 </Row>
-
 
 
             </Container>

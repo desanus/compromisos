@@ -3,6 +3,7 @@ import './App.scss'
 import NavbarLanus from './components/NavbarLanus'
 import Footer from './components/Footer'
 import { Outlet } from "react-router-dom";
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
 
 
       <Footer />
-
+      <ScrollToTopButton/>
 
     </div>
 

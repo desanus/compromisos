@@ -16,9 +16,11 @@ const ModalCompromiso = (props) => {
         return texto.replace(/<[^>]+>/g, '');
     }
 
+
+    
     const obtenerIcono = () => {
 
-        return (props.compromiso.iconos) ? 'https://sigem.lanus.gob.ar/compromisos/iconos/' + props.compromiso.iconos[0].iconoA : imagen
+        return (props.compromiso.iconos[0].iconoA) ? 'https://sigem.lanus.gob.ar/compromisos/iconos/' + props.compromiso.iconos[0].iconoA : imagen
 
     }
 
@@ -75,9 +77,16 @@ const ModalCompromiso = (props) => {
                         </Row>
 
                         <Row>
-                            <Col className='botones-modal'>
+                            <Col md={8} xs={12}>
+                            </Col>
+                            <Col md={1} xs={6} className='botones-modal'>
+                                <button variant="primary"  className='button-cerrar' onClick={props.handleclose}>
+                                    Cerrar
+                                </button>
+                            </Col>
+                            <Col md={2} xs={6} className='botones-modal'>
                                 <button variant="primary" className='button' >
-                                    <Link to={`/compromiso/${props.compromiso.idCompromiso}/anio/${props.anio}`} className="volver">Ver más sobre el compromiso</Link>
+                                    <Link to={`/compromiso/${props.compromiso.idCompromiso}/anio/${props.anio}`} className="volver">Ver más</Link>
                                 </button>
                             </Col>
 

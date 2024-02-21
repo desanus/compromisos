@@ -10,6 +10,9 @@ import Tabs from 'react-bootstrap/Tabs';
 
 const Compromisos = () => {
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     const [compromisos, setCompromisos] = useState([]);
     const [compromisosPorAnio, setCompromisosPorAnio] = useState([]);
