@@ -60,6 +60,9 @@ const Compromiso = () => {
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     return (
         <>
@@ -98,7 +101,7 @@ const Compromiso = () => {
 
                 </Row>
 
-            
+
                 <Row>
                     <Col md={8}>
                         {(loading) ?
@@ -111,6 +114,7 @@ const Compromiso = () => {
                             :
                             <Col>
                                 <h1 className='titulo'>{compromiso && compromiso.titulo}</h1>
+                                <h1 className='titulo' style={{ marginTop: "50px", fontSize:"28px" }}> ¿De qué se trata este compromiso? </h1>
                             </Col>
 
 
@@ -176,11 +180,11 @@ const Compromiso = () => {
                     }
                 </Row>
 
-                
+
+
+
                 <Row>
-                    <Col></Col>
-                    <Col><hr></hr></Col>
-                    <Col></Col>
+                    <h1 className='titulo' style={{ marginTop: "50px", fontSize:"28px" }}> ¿Por qué lo asumimos? </h1>
                 </Row>
                 <Row className='diagnostico'>
 
@@ -202,10 +206,11 @@ const Compromiso = () => {
 
                 </Row>
 
-                {(compromiso.graficos) ?
-                    <Row style={{ marginTop: "20px", marginBottom:"30px" }}>
+                        {/* INDICADORES */}
+                {/* {(compromiso.graficos) ?
+                    <Row style={{ marginTop: "20px", marginBottom: "30px" }}>
                         <Col>
-                            
+
                             {(loading) ?
 
                                 <Col>
@@ -215,16 +220,16 @@ const Compromiso = () => {
                                 </Col>
                                 :
                                 <Col>
-                                <Row style={{marginBottom:"30px"}}>
-                                  <h1 className='titulo'>AGREGAR ALGUN TITULO</h1>
-                            
-                                </Row>
-                                   <Row>
-                                    
-                                    {compromiso.graficos.map((grafico)=>{
-                                        return <Col className='columna'> <img style={{width:"auto", height:"40vh"}} src={`https://sigem.lanus.gob.ar/compromisos/graficos/${grafico.grafico}`}></img></Col>
-                                    })}
-                                    </Row>    
+                                    <Row style={{ marginBottom: "30px" }}>
+                                        <h1 className='titulo'>AGREGAR ALGUN TITULO</h1>
+
+                                    </Row>
+                                    <Row>
+
+                                        {compromiso.graficos.map((grafico) => {
+                                            return <Col className='columna'> <img style={{ width: "auto", height: "40vh" }} src={`https://sigem.lanus.gob.ar/compromisos/graficos/${grafico.grafico}`}></img></Col>
+                                        })}
+                                    </Row>
                                 </Col>
 
 
@@ -232,7 +237,7 @@ const Compromiso = () => {
                         </Col>
                     </Row>
                     :
-                    <></>}
+                    <></>} */}
                 <Row>
                     <br></br>
                     <br></br>
@@ -256,7 +261,7 @@ const Compromiso = () => {
 
                 </Row>
 
-                <Row style={{fontSize:"20px"}}>
+                <Row style={{ fontSize: "20px" }}>
                     {(compromiso.etapas) ? <Checklist etapas={compromiso.etapas} /> : <></>}
 
                 </Row>

@@ -215,7 +215,7 @@ const ExploradorCompromisos = (props) => {
                 <Card.Body>
                     <Card.Title style={{ fontSize: "30px" }}>Explorador de compromisos</Card.Title>
                     <Card.Title ><p>Elegí el año y buscá los compromisos por área, eje temático ó bien podés buscar por palabra clave.</p></Card.Title>
-
+{/* 
                     <Row className='row-filtros'>
                         <label style={{ marginBottom: "10px" }}> Filtrá por área:</label>
                         <Col className="columna-filtro">
@@ -229,7 +229,7 @@ const ExploradorCompromisos = (props) => {
                                 </span>
                             ))}
                         </Col>
-                    </Row>
+                    </Row> */}
                     <Row className='row-filtros'>
                         <label style={{ marginBottom: "10px" }}> Filtrá por eje temático</label>
 
@@ -250,9 +250,9 @@ const ExploradorCompromisos = (props) => {
 
                     <Row>
 
-                        <Col md={2}>
+                        <Col md={2} >
 
-                            <Form.Group className="mb-3">
+                            <Form.Group className="mb-4">
                                 <Form.Label className='input-filter'>Buscá por año:</Form.Label>
                                 <Form.Select onChange={handleAnioChange} className='filter-input-dropdown' defaultValue={0}>
                                     <option value={0}>Todos los años</option>
@@ -263,9 +263,22 @@ const ExploradorCompromisos = (props) => {
                                 </Form.Select>
                             </Form.Group>
                         </Col>
-                        <Col md={3}>
+
+                        <Col md={2} >
+
+                            <Form.Group className="mb-3">
+                                <Form.Label className='input-filter'>Buscá por plazo:</Form.Label>
+                                <Form.Select onChange={handlePlazoChange} className='filter-input-dropdown' defaultValue={0}>
+                                    <option value={0}> Todos</option>
+                                    <option value={1}>Corto plazo</option>
+                                    <option value={2}>Mediano plazo</option>
+                                    <option value={3}>Largo plazo</option>
+                                </Form.Select>
+                            </Form.Group>
+                        </Col>
+                        <Col md={8} >
                             <Form >
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Group className="mb-4" controlId="formBasicEmail">
                                     <Form.Label className='input-filter'>Buscar por palabra clave:</Form.Label>
                                     <Form.Control
                                         className='filter-busqueda-input'
@@ -278,18 +291,6 @@ const ExploradorCompromisos = (props) => {
                             </Form>
                         </Col>
 
-                        <Col md={3}>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label className='input-filter'>Buscá por plazo:</Form.Label>
-                                <Form.Select onChange={handlePlazoChange} className='filter-input-dropdown' defaultValue={0}>
-                                    <option value={0}> Todos</option>
-                                    <option value={1}>Corto plazo</option>
-                                    <option value={2}>Mediano plazo</option>
-                                    <option value={3}>Largo plazo</option>
-                                </Form.Select>
-                            </Form.Group>
-                        </Col>
 
                         {/* <Col md={4}>
 
