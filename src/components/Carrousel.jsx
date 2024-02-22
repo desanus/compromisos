@@ -15,15 +15,13 @@ const Carrousel = (props) => {
 
     return (
         <Row>
-            <br></br>
-            <br></br>
-
+            
             <Col>
                 <Swiper spaceBetween={30}
                     pagination={{
                         clickable: true,
                     }}
-                    initialSlide={1} // Aquí estableces el slide del medio como activo inicialmente
+                    initialSlide={0} // Aquí estableces el slide del medio como activo inicialmente
                     slidesPerView={3}
                     centeredSlides={true} // Centra el slide activo
                     autoplay={{

@@ -5,7 +5,6 @@ import { Row, Col } from 'react-bootstrap'
 const Checklist = (props) => {
 
     const etapasOrdenadas = props.etapas.sort((a, b) => a.etapa - b.etapa);
-    console.log(etapasOrdenadas)
 
     return (
         <ul>

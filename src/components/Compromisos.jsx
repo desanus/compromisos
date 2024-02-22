@@ -33,7 +33,6 @@ const Compromisos = () => {
     const [compromisosFiltrados, setCompromisosFiltrados] = useState(null)
     const [selectedAnio, setSelectedAnio] = useState(2024)
     const [mapaActivo, setMapaActivo] = useState(false)
-    console.log(mapaActivo)
 
     const handleAnioChange = (selectedAnio) => {
         setSelectedAnio(selectedAnio)
@@ -56,7 +55,7 @@ const Compromisos = () => {
     return (
         <div>
             <InfoHome />
-            <p></p>
+           
             <Row>
                 <Col></Col>
                 <Col><hr></hr></Col>

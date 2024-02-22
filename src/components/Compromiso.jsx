@@ -63,7 +63,7 @@ const Compromiso = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, []);
+    }, []);
 
     return (
         <>
@@ -115,7 +115,7 @@ const Compromiso = () => {
                             :
                             <Col>
                                 <h1 className='titulo'>{compromiso && compromiso.titulo}</h1>
-                                <h1 className='titulo' style={{ marginTop: "50px", fontSize:"28px" }}> ¿De qué se trata este compromiso? </h1>
+                                <h1 className='titulo' style={{ marginTop: "50px", fontSize: "28px" }}> ¿De qué se trata este compromiso? </h1>
                             </Col>
 
 
@@ -185,7 +185,7 @@ const Compromiso = () => {
 
 
                 <Row>
-                    <h1 className='titulo' style={{ marginTop: "10px", fontSize:"28px" }}> ¿Por qué lo asumimos? </h1>
+                    <h1 className='titulo' style={{ marginTop: "10px", fontSize: "28px" }}> ¿Por qué lo asumimos? </h1>
                 </Row>
                 <Row className='diagnostico'>
 
@@ -207,7 +207,7 @@ const Compromiso = () => {
 
                 </Row>
 
-                        {/* INDICADORES */}
+                {/* INDICADORES */}
                 {/* {(compromiso.graficos) ?
                     <Row style={{ marginTop: "20px", marginBottom: "30px" }}>
                         <Col>
@@ -241,31 +241,28 @@ const Compromiso = () => {
                     <></>} */}
                 <Row>
                     <br></br>
-                    <br></br>
-                    <br></br>
                 </Row>
-                {(compromiso.fotos) ?
-                    <Carrousel fotos={compromiso.fotos} /> : <></>
-                }
-
-              
                 <Row>
+                    <Col>
+                    {(compromiso.fotos) ?
+                        <Carrousel fotos={compromiso.fotos} /> : <></>
+                    }
+                    </Col>
+                </Row>
 
+                <Row>
                     <Col>
                         <h1 className='titulo-metas'>Metas</h1>
                     </Col>
-
-
                 </Row>
 
                 <Row style={{ fontSize: "20px" }}>
                     {(compromiso.etapas) ? <Checklist etapas={compromiso.etapas} /> : <></>}
-
                 </Row>
 
                 <Row>
                     <Col className="columna">
-                        <BotonVolver/>
+                        <BotonVolver />
                     </Col>
                 </Row>
 

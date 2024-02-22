@@ -1,0 +1,29 @@
+.contenedor-botones {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    width: auto;
+}
+
+
+/* Media query para pantallas con un ancho máximo de 600px */
+@media (max-width: 600px) {
+    .contenedor-botones {
+        display: grid;
+        align-items: center;
+        margin-top: 5px;
+    }
+      
+  }
+  
+  /* Media query para pantallas con un ancho mínimo de 601px y máximo de 900px */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .contenedor-botones {
+        display: grid;
+        align-items: center;
+        margin-top: 5px;
+    }
+      
+      
+  }
+  

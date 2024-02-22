@@ -58,7 +58,7 @@ const Tarjeta = (props) => {
                             }
                         </div>
 
-                        <div style={{ marginTop: "10px", marginBottom: "10px", textAlign:"center" }}> {/* Contenedor para ambos h4 */}
+                        <div  className='descripcion-tarjeta'> {/* Contenedor para ambos h4 */}
                             <h4>{props.compromiso.titulo}</h4>
                             <h4>{calcularPorcentaje()}%</h4>
                         </div>

@@ -56,7 +56,6 @@ const ExploradorCompromisos = (props) => {
         }
         if (palabraElegida !== '') {
             compromisosFiltrados = filtrarPalabra(compromisosFiltrados)
-            console.log("filtrados: ", compromisosFiltrados)
         }
         return compromisosFiltrados;
 
@@ -132,7 +131,6 @@ const ExploradorCompromisos = (props) => {
 
 
     const filtrarPalabra = (filtrar) => {
-        console.log(palabraElegida.length)
         if (palabraElegida.length > 2) {
 
 
@@ -147,7 +145,7 @@ const ExploradorCompromisos = (props) => {
                 return result;
             }, []);
             return comp;
-        }else {
+        } else {
             return filtrar
         }
     }
@@ -215,7 +213,7 @@ const ExploradorCompromisos = (props) => {
                 <Card.Body>
                     <Card.Title style={{ fontSize: "30px" }}>Explorador de compromisos</Card.Title>
                     <Card.Title ><p>Elegí el año y buscá los compromisos por área, eje temático ó bien podés buscar por palabra clave.</p></Card.Title>
-{/* 
+                    {/* 
                     <Row className='row-filtros'>
                         <label style={{ marginBottom: "10px" }}> Filtrá por área:</label>
                         <Col className="columna-filtro">
@@ -233,10 +231,11 @@ const ExploradorCompromisos = (props) => {
                     <Row className='row-filtros'>
                         <label style={{ marginBottom: "10px" }}> Filtrá por eje temático</label>
 
-                        <Col className="columna-filtro">
-                            {ejes && ejes.map((eje) => (
+
+                        {ejes && ejes.map((eje) => (
+                            <Col className="contenedor-botones" xs={6} md={2}  key={eje.id}>
                                 <span
-                                    key={eje.id}
+                                   
 
                                     className={`boton-hover bagde-area ${eje.id === checkedIndexEje ? "seleccionado" : ""}`}
 
@@ -244,13 +243,14 @@ const ExploradorCompromisos = (props) => {
                                 >
                                     {eje.nombre}
                                 </span>
-                            ))}
-                        </Col>
+                            </Col>
+                        ))}
+
                     </Row>
 
                     <Row>
 
-                        <Col md={2} >
+                        <Col md={2} xs={6}>
 
                             <Form.Group className="mb-4">
                                 <Form.Label className='input-filter'>Buscá por año:</Form.Label>
@@ -264,7 +264,7 @@ const ExploradorCompromisos = (props) => {
                             </Form.Group>
                         </Col>
 
-                        <Col md={2} >
+                        <Col md={2} xs={6}>
 
                             <Form.Group className="mb-3">
                                 <Form.Label className='input-filter'>Buscá por plazo:</Form.Label>
@@ -276,7 +276,7 @@ const ExploradorCompromisos = (props) => {
                                 </Form.Select>
                             </Form.Group>
                         </Col>
-                        <Col md={8} >
+                        <Col md={8} xs={12}>
                             <Form >
                                 <Form.Group className="mb-4" controlId="formBasicEmail">
                                     <Form.Label className='input-filter'>Buscar por palabra clave:</Form.Label>
