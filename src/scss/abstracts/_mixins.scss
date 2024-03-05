@@ -4,7 +4,7 @@
     justify-content: center;
 }
 
-.botones-modal{
+.botones-modal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -92,6 +92,13 @@
 }
 
 .leaflet-container {
-	width: auto; 
-	height: 50vh;
-  }
+    width: auto;
+    height: 50vh;
+}
+
+
+.titulo {
+    color: $color-principal;
+    font-weight: bold;
+    font-size: 15px;
+}

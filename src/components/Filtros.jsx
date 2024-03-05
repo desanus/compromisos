@@ -98,6 +98,14 @@ const ExploradorCompromisos = (props) => {
 
     useEffect(() => {
 
+        setCheckedIndexEje(props.ejeElegido === checkedIndexEje ? null : props.ejeElegido);
+        setEjeElegido(props.ejeElegido === checkedIndexEje ? null : props.ejeElegido)
+ 
+    }, [props.ejeElegido])
+
+
+    useEffect(() => {
+
         props.handleCompromisos(aplicarFiltros())
     }, [plazoElegido])
 
@@ -151,14 +159,6 @@ const ExploradorCompromisos = (props) => {
     }
 
 
-    // const buscarPorPalabra = (busqueda) => {
-    //     // Filtrar compromisos por el campo "nombre"
-    //     const comp = props.compromisos.filter((compromiso) => {
-    //         return compromiso.nombre.toLowerCase().includes(busqueda.toLowerCase());
-    //     });
-    //     props.handleCompromisos(comp);
-    // };
-
     const handleAnioChange = (event) => {
         const selectedAnio = parseInt(event.target.value, 10);
         props.setSelectedAnio(selectedAnio);
@@ -209,10 +209,11 @@ const ExploradorCompromisos = (props) => {
 
     return (
         <>
-            <Card style={{ border: "none" }} >
+            <Card style={{ border: "none", backgroundColor:"aliceblue" }} >
                 <Card.Body>
-                    <Card.Title style={{ fontSize: "30px" }}>Explorador de compromisos</Card.Title>
+                    {/* <Card.Title style={{ fontSize: "30px" }}>Explorador de compromisos</Card.Title>
                     <Card.Title ><p>Elegí el año y buscá los compromisos por área, eje temático ó bien podés buscar por palabra clave.</p></Card.Title>
+                   */}
                     {/* 
                     <Row className='row-filtros'>
                         <label style={{ marginBottom: "10px" }}> Filtrá por área:</label>

@@ -15,21 +15,26 @@ const Carrousel = (props) => {
 
     return (
         <Row>
-            
-            <Col>
+
+            <Col >
                 <Swiper spaceBetween={30}
                     pagination={{
                         clickable: true,
                     }}
                     initialSlide={0} // Aquí estableces el slide del medio como activo inicialmente
-                    slidesPerView={3}
+                   // slidesPerView={3}
                     centeredSlides={true} // Centra el slide activo
+                    breakpoints={{
+                        768: {
+                            slidesPerView: 3,
+                        }
+                    }}
                     autoplay={{
                         delay: 2500,
                         disableOnInteraction: false,
-                      }}
+                    }}
                     modules={[Pagination]} className="mySwiper">
-                    {imagenes.map((foto,index) => {
+                    {imagenes.map((foto, index) => {
                         return (
 
                             <SwiperSlide key={index}>
@@ -42,7 +47,7 @@ const Carrousel = (props) => {
                         )
                     })}
 
-                  
+
                 </Swiper>
             </Col>
         </Row>

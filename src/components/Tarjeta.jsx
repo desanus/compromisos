@@ -28,14 +28,15 @@ const Tarjeta = (props) => {
         });
         return sumaPeso
     }
+  
     useEffect(() => {
         if (props.compromiso.iconos[0].iconoA) {
             setIcono(`https://sigem.lanus.gob.ar/compromisos/iconos/${props.compromiso.iconos[0].iconoA}`)
         }
 
-    }, []);
+    }, [props.compromiso]);
 
-
+   
 
 
     return (
@@ -48,9 +49,9 @@ const Tarjeta = (props) => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 layout>
-                <Row style={{ marginBottom: "20px", textAlign: "center" }} >
-                    <Col>
+                    <Col style={{height:"240px", textAlign: "center"}}>
 
+                        
                         <div className="contenedor-imagenes" >
                             <img src={icono} alt={props.compromiso.titulo} className='tarjetas-img' />
                             {(calcularPorcentaje() === 100) ?
@@ -63,10 +64,8 @@ const Tarjeta = (props) => {
                             <h4>{calcularPorcentaje()}%</h4>
                         </div>
 
-
                     </Col>
 
-                </Row>
 
             </motion.div >
             <ModalCompromiso show={show} handleclose={handleClose} porcentaje={calcularPorcentaje()} compromiso={props.compromiso} anio={props.selectedAnio} />

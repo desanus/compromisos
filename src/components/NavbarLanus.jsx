@@ -30,12 +30,11 @@ const NavbarLanus = () => {
             </div>
 
             <div className="inferior">
-                <a className="logo" href="/"></a>
+                <a className="logo" href="/"  ></a>
 
 
 
                 <div className="menu">
-                    <a className="desplegar desplegar-menu" tabIndex={0}><span></span><span></span><span></span></a>
                     <nav uawraparea="1" wrapareatype="menu">
                         <ul className="contenido" role="menubar">
                             <li>

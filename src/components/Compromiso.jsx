@@ -7,6 +7,7 @@ import Badge from 'react-bootstrap/Badge';
 import Checklist from './Checklist';
 import Placeholder from 'react-bootstrap/Placeholder';
 import BotonVolver from './BotonVolver';
+import imagen from '../img/logo.png'
 
 
 
@@ -65,6 +66,7 @@ const Compromiso = () => {
         window.scrollTo(0, 0);
     }, []);
 
+
     return (
         <>
             <ProgressBar now={calcularPorcentaje(compromiso)} visuallyHidden style={{ height: "3px" }} />
@@ -72,51 +74,60 @@ const Compromiso = () => {
             <Container className='compromiso'>
 
 
-
                 <Row>
-                    <Col md={8}>
-
-                    </Col>
-
-                    <Col className='columna'>
-
-                        <Row>
-                            <Col className='columna'>
-                                {compromiso.areas && compromiso.areas.map((area, index) => {
-                                    return <span key={index} className="bagde-area">{area.nombre}</span>
-
-                                })}
-
-                            </Col>
-                        </Row>
-                        <Row >
-                            <Col className='columna'>
-                                {compromiso.ejes && compromiso.ejes.map((eje, index) => {
-                                    return <span key={index} className="bagde-area">{eje.nombre}</span>
-
-                                })}
-
-                            </Col>
-                        </Row>
-                    </Col>
-
-                </Row>
-
-
-                <Row>
-                    <Col md={8}>
+                    <Col md={12}>
                         {(loading) ?
 
-                            <Col>
+                            <>
                                 <Placeholder as="p" animation="glow" className="glow">
                                     <Placeholder md={4} />
                                 </Placeholder>
-                            </Col>
+                            </>
                             :
-                            <Col>
-                                <h1 className='titulo'>{compromiso && compromiso.titulo}</h1>
-                                <h1 className='titulo' style={{ marginTop: "50px", fontSize: "28px" }}> ¿De qué se trata este compromiso? </h1>
-                            </Col>
+                            <>
+                                <Row >
+                                    <Col md={10}>
+                                        <h1 className='titulo'>{compromiso && compromiso.titulo}</h1>
+
+                                    </Col>
+                                    <Col md={2} >
+                                        {compromiso.ejes && compromiso.ejes.map((eje, index) => {
+
+                                            return <img key={index} src={(compromiso.ejes.icono) ? `https://sigem.lanus.gob.ar/compromisos/iconos/${compromiso.ejes.icono}` : imagen} alt={eje.nombre} className='icono-eje-compromiso' />
+
+                                        })}
+
+                                    </Col>
+                                </Row>
+
+
+
+
+                                {(loading) ?
+
+                                    <Row>
+                                        <Placeholder as="p" animation="glow" className="glow">
+                                            <Placeholder md={1} />
+                                        </Placeholder>
+                                    </Row>
+
+                                    :
+                                    <Row>
+                                        <Col md={1}>
+                                            <h1>
+                                                {(compromiso.plazo) ? <Badge bg="secondary">{obtenerPlazo(compromiso.plazo)}</Badge> : <></>}
+
+                                            </h1>
+                                        </Col>
+                                        <Col md={1}>
+                                            <h1>
+                                                <Badge bg="success">{calcularPorcentaje(compromiso && compromiso)}% de avance</Badge>
+                                            </h1>
+                                        </Col>
+                                    </Row>
+                                }
+                                <h1 className='titulo' style={{ fontSize: "28px", marginTop: "20px" }}> ¿De qué se trata este compromiso? </h1>
+                            </>
 
 
                         }
@@ -124,44 +135,9 @@ const Compromiso = () => {
 
                 </Row>
 
-                <Row>
-                    {(loading) ?
-                        <Col>
-                            <Placeholder as="p" animation="glow" className="glow">
-                                <Placeholder md={1} />
-                            </Placeholder>
-                        </Col>
 
 
-                        :
-                        <Col>
-                            <h1>
-                                {(compromiso.plazo) ? <Badge bg="secondary">{obtenerPlazo(compromiso.plazo)}</Badge> : <></>}
 
-                            </h1>
-                        </Col>
-
-
-                    }
-                </Row>
-
-                {(loading) ?
-
-                    <Row>
-                        <Placeholder as="p" animation="glow" className="glow">
-                            <Placeholder md={1} />
-                        </Placeholder>
-                    </Row>
-
-                    :
-                    <Row>
-                        <Col >
-                            <h1>
-                                <Badge bg="success">{calcularPorcentaje(compromiso && compromiso)}%</Badge>
-                            </h1>
-                        </Col>
-                    </Row>
-                }
 
                 <Row className='descripcion'>
 
@@ -244,15 +220,18 @@ const Compromiso = () => {
                 </Row>
                 <Row>
                     <Col>
-                    {(compromiso.fotos) ?
-                        <Carrousel fotos={compromiso.fotos} /> : <></>
-                    }
+                        {(compromiso.fotos) ?
+                            <Carrousel fotos={compromiso.fotos} /> : <></>
+                        }
                     </Col>
                 </Row>
 
-                <Row>
+                <Row style={{ marginTop: "30px" }}>
                     <Col>
-                        <h1 className='titulo-metas'>Metas</h1>
+                        {(compromiso.etapas) ?
+
+                            <h1 className='titulo' style={{ fontSize: "28px" }}>Etapas del compromiso</h1>
+                            : <></>}
                     </Col>
                 </Row>
 

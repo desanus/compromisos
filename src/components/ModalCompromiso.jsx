@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Link } from "react-router-dom";
 import Checklist from './Checklist';
+import { Line, Circle } from 'rc-progress';
 
 
 const ModalCompromiso = (props) => {
@@ -17,7 +18,7 @@ const ModalCompromiso = (props) => {
     }
 
 
-    
+
     const obtenerIcono = () => {
 
         return (props.compromiso.iconos[0].iconoA) ? 'https://sigem.lanus.gob.ar/compromisos/iconos/' + props.compromiso.iconos[0].iconoA : imagen
@@ -40,14 +41,14 @@ const ModalCompromiso = (props) => {
     return (
         <Modal show={props.show} onHide={() => { cerrarModal() }} className="modal-info" size="xl" centered >
 
-         
-            <Modal.Body style={{ margin: "30px", marginTop:"0px" }} >
+
+            <Modal.Body style={{ margin: "30px", marginTop: "0px" }} >
 
 
                 <Row>
                     <Col>
                         <Row style={{ marginTop: "20px" }}>
-                            <Col className='columna' md={4}>
+                            <Col className='columna' md={4} style={{ marginBottom: "20px" }}>
                                 <img src={obtenerIcono()} className="img" />
                             </Col>
                             <Col>
@@ -58,9 +59,16 @@ const ModalCompromiso = (props) => {
                                     </div>
                                 </Row>
 
-                                <Row style={{ marginTop: "40px" }}>
-                                    <label style={{ fontSize: "20px" }}>ESTADO DEL COMPROMISO:</label>
+                                <Row style={{ marginTop: "0px" }}>
 
+
+                                    {(props.compromiso.etapas) ?
+
+                                        <label className='titulo' style={{ fontSize: "20px" }}>
+                                            Etapas del compromiso:
+                                        </label>
+                                        : <></>}
+                                        
                                     <Row style={{ fontSize: "15px" }}>
                                         {(props.compromiso.etapas) ? <Checklist etapas={props.compromiso.etapas} /> : <></>}
 
@@ -69,7 +77,25 @@ const ModalCompromiso = (props) => {
 
                                 <Row>
                                     <Col>
-                                        <ProgressBar variant={(now === 100) ? "success" : "primary"} now={now} label={`${now}%`} />
+                                        <Line percent={now}
+                                            strokeWidth={2}
+                                            strokeColor={(now === 100) ? "success" : "#32b6e9"}>
+
+                                        </Line>
+
+
+                                        {/* <ProgressBar variant={(now === 100) ? "success" : "primary"} now={now} label={`${now}%`} /> */}
+                                    </Col>
+
+                                </Row>
+                                <Row>
+                                    <Col className='columna'>
+
+                                        <h1 style={{ fontSize: "20px", color: "#32b6e9" }}>
+                                            <b>{now}%
+                                            </b>
+                                        </h1>
+
                                     </Col>
                                 </Row>
 
@@ -80,7 +106,7 @@ const ModalCompromiso = (props) => {
                             <Col md={8} xs={12}>
                             </Col>
                             <Col md={1} xs={6} className='botones-modal'>
-                                <button variant="primary"  className='button-cerrar' onClick={props.handleclose}>
+                                <button variant="primary" className='button-cerrar' onClick={props.handleclose}>
                                     Cerrar
                                 </button>
                             </Col>

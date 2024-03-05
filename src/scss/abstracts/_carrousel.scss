@@ -29,24 +29,21 @@
 }
 
 
+@media screen and (max-width: 768px) {
+  .swiper-slide {
+    
+    width: 100% !important; /* Ajusta el ancho de los slides para que ocupen toda la pantalla */
+  }
 
+  
+}
 
 /* Media query para pantallas con un ancho máximo de 600px */
 @media (max-width: 600px) {
   .swiper-wrapper {
-    padding: 40px 0;
+    padding: 0px 0;
   }
 
-  .swiper-slide-active {
-    border: 6px solid var(--color-primary);
-    padding: 4px;
-    background: #fff;
-    z-index: 1;
-    height: auto;
-    width: auto;
-    transform: scale(1.4);
-  }
-    
 }
 
 /* Media query para pantallas con un ancho mínimo de 601px y máximo de 900px */

@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   width: 150px;
-  height: 150px;
-  margin: 0 auto;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .imagen-superpuesta {
@@ -26,6 +26,7 @@
   justify-content: center;
   align-items: center;
   width: auto;
+
   p {
     height: 2px;
   }
@@ -39,9 +40,9 @@
     height: 150px;
   }
 
-  font-size: 30px;
 
   .titulo {
+    font-size: 25px;
     color: $color-principal;
   }
 
@@ -51,11 +52,13 @@
   font-size: 40px;
   color: $color-principal;
 }
-.compromiso .titulo-metas{
-  color:$color-principal;
+
+.compromiso .titulo-metas {
+  color: $color-principal;
   font-size: 30px;
 }
-.compromiso .porcentaje{
+
+.compromiso .porcentaje {
   display: flex;
   justify-content: center;
 }
@@ -76,17 +79,51 @@
 
   }
 }
+
 .diagnostico {
   p {
     font-size: 20px;
 
   }
 }
-.progress-bar {  // this is for the bar itself
+
+.progress-bar {
+  // this is for the bar itself
   background-color: #4AA69F;
 }
 
-.glow{
-  color:$color-principal;
+.glow {
+  color: $color-principal;
 }
 
+.icono-eje-compromiso {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right !important;
+  width: 70px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.botones-eje-compromiso {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+  .icono-eje-compromiso {
+    display: none;
+
+  }
+  .botones-eje-compromiso {
+
+    margin-bottom: 5px;
+  }
+}

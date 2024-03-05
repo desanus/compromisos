@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import Filtros from './Filtros';
 import TarjetasCompromisos from './TarjetasCompromisos';
 import InfoHome from './InfoHome';
-import { Row, Col } from 'react-bootstrap';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+import BotonesEjes from './BotonesEjes';
+import {Row, Col} from 'react-bootstrap'
+
 
 const Compromisos = () => {
 
@@ -51,44 +51,57 @@ const Compromisos = () => {
 
     }
 
-
+    const [checkedIndexEje, setCheckedIndexEje] = useState(null);
+    const [ejeElegido, setEjeElegido] = useState(null)
+   
     return (
         <div>
             <InfoHome />
            
             <Row>
-                <Col></Col>
-                <Col><hr></hr></Col>
-                <Col></Col>
-            </Row>
+                
+                <BotonesEjes setCheckedIndexEje={setCheckedIndexEje}  checkedIndexEje={checkedIndexEje} setEjeElegido={setEjeElegido}/>
 
-            <Filtros compromisos={compromisosPorAnio} handleCompromisos={setCompromisosFiltrados} setSelectedAnio={handleAnioChange} />
+
+            </Row>
+            <Row>
+                <p></p>
+                    <Col></Col>
+                    <Col><hr></hr></Col>
+                    <Col></Col>
+                </Row>
             <p></p>
             <div>
+            <TarjetasCompromisos compromisos={compromisosFiltrados} selectedAnio={selectedAnio} />
 
-                <Tabs
+                {/* <Tabs
                     defaultActiveKey={1}
+                    style={{borderBlock:"aliceblue"}}
                     id="fill-tab-example"
                     className="mb-3"
                     fill
                     onSelect={() => { setMapaActivo(true) }}
                 >
-                    <Tab eventKey={1} title="Compromisos">
+                    <Tab eventKey={1} title="">
                         <TarjetasCompromisos compromisos={compromisosFiltrados} selectedAnio={selectedAnio} />
 
                     </Tab>
-                    <Tab eventKey={2} title="Mapa" >
+                     <Tab eventKey={2} title="Mapa" >
                         <div >
 
                             <Mapa compromisos={compromisosFiltrados} showmapa={mapaActivo} />
 
                         </div>
 
-                    </Tab>
+                    </Tab> 
 
-                </Tabs>
+                </Tabs> */}
 
             </div>
+
+
+            <Filtros compromisos={compromisosPorAnio} handleCompromisos={setCompromisosFiltrados} setSelectedAnio={handleAnioChange} ejeElegido={ejeElegido}/>
+
 
 
 
