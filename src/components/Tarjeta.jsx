@@ -53,7 +53,7 @@ const Tarjeta = (props) => {
 
                         
                         <div className="contenedor-imagenes" >
-                            <img src={icono} alt={props.compromiso.titulo} className='tarjetas-img' />
+                            <img src={(props.compromiso.iconos[0].iconoA)?`https://sigem.lanus.gob.ar/compromisos/iconos/${props.compromiso.iconos[0].iconoA}`:imagen } alt={props.compromiso.titulo} className='tarjetas-img' />
                             {(calcularPorcentaje() === 100) ?
                                 <img className="imagen-superpuesta" src={completo} alt="Imagen superpuesta" /> : <></>
                             }

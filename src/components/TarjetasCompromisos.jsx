@@ -14,7 +14,7 @@ const TarjetasCompromisos = (props) => {
             <>
                 <Card style={{border:"none"}}>
                     <Card.Body>
-                        <motion.div layout className="tarjetas-compromisos">
+                        <motion.div layout className="tarjetas-compromisos" >
                             <AnimatePresence>
                                 {props.compromisos && props.compromisos.map((compromiso,index) => {
                                     return <Tarjeta key={index} compromiso={compromiso} selectedAnio={props.selectedAnio}/>

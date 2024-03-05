@@ -127,3 +127,17 @@
     margin-bottom: 5px;
   }
 }
+
+
+@media (max-width: 376px) {
+
+    .contenedor-imagenes {
+      position: relative;
+      display: inline-table;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+}
