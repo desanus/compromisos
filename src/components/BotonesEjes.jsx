@@ -69,7 +69,8 @@ const BotonesConImagen = (props) => {
                             onMouseEnter={() => handleMouseEnter(index)}
                             onMouseLeave={handleMouseLeave}
 
-                            style={{ transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)', marginTop: "20px", marginBottom: "20px", marginRight: "0px" }}
+                            style={{ transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)', 
+                            marginTop: "20px", marginBottom: "20px", marginRight: "0px", cursor: "pointer" }}
                             onClick={() => handleButtonEjes(eje.id)}
                         >
 
