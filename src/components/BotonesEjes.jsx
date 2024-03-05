@@ -59,7 +59,7 @@ const BotonesConImagen = (props) => {
 
     return (
         <Card style={{border:"none"}}>
-            <Card.Body style={{ backgroundColor: "aliceblue" }}>
+            <Card.Body >
 
                 <Row className='columna'>
                     {ejes && ejes.map((eje, index) => (
@@ -85,7 +85,7 @@ const BotonesConImagen = (props) => {
                                     {/* {eje.nombre.split(" ").map((word, i) => (
                                 <h1 className='titulo' key={i} style={{margin:"0",  color:"white"}}>{word}</h1>
                             ))} */}
-                                    <h1 className='titulo' style={{ margin: "0" }}>{eje.nombre}</h1>
+                                    <h1 className='titulo' style={{ margin: "0", color:"#5f272c" }}>{eje.nombre}</h1>
 
                                 </div>
                             </div>
