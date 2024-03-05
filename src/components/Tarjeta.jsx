@@ -41,11 +41,11 @@ const Tarjeta = (props) => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 layout>
-                    <Col style={{height:"240px", textAlign: "center"}}>
+                    <Col style={{height:"240px", textAlign: "center", cursor: "pointer" }}>
 
                         
                         <div className="contenedor-imagenes" >
-                            <img src={(props.compromiso.iconos[0].iconoA) ? `https://sigem.lanus.gob.ar/compromisos/iconos/${props.compromiso.iconos[0].iconoA}`:imagen} alt={props.compromiso.titulo} className='tarjetas-img' />
+                            <img src={(props.compromiso.iconos[0].iconoA)?`https://sigem.lanus.gob.ar/compromisos/iconos/${props.compromiso.iconos[0].iconoA}`:imagen } alt={props.compromiso.titulo} className='tarjetas-img' />
                             {(calcularPorcentaje() === 100) ?
                                 <img className="imagen-superpuesta" src={completo} alt="Imagen superpuesta" /> : <></>
                             }
