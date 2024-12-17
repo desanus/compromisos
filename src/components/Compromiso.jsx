@@ -39,7 +39,7 @@ const Compromiso = () => {
                 return 'A corto plazo'
                 break;
             case '2':
-                return 'A media plazo'
+                return 'A mediano plazo'
                 break;
             case '3':
                 return 'A largo plazo'
@@ -183,7 +183,7 @@ const Compromiso = () => {
 
                 </Row>
 
-                {/* INDICADORES */}
+                {{/* INDICADORES */}
                 /* {(compromiso.graficos) ?
                     <Row style={{ marginTop: "20px", marginBottom: "30px" }}>
                         <Col>
@@ -214,7 +214,7 @@ const Compromiso = () => {
                         </Col>
                     </Row>
                     :
-                    <></>} 
+                    <></>} */}
                 <Row>
                     <br></br>
                 </Row>
