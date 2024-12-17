@@ -184,7 +184,7 @@ const Compromiso = () => {
                 </Row>
 
                 {/* INDICADORES */}
-                {/* {(compromiso.graficos) ?
+                /* {(compromiso.graficos) ?
                     <Row style={{ marginTop: "20px", marginBottom: "30px" }}>
                         <Col>
 
@@ -214,7 +214,7 @@ const Compromiso = () => {
                         </Col>
                     </Row>
                     :
-                    <></>} */}
+                    <></>} 
                 <Row>
                     <br></br>
                 </Row>
