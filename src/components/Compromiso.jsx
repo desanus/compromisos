@@ -39,7 +39,7 @@ const Compromiso = () => {
                 return 'A corto plazo'
                 break;
             case '2':
-                return 'A mediano plazo'
+                return 'A media plazo'
                 break;
             case '3':
                 return 'A largo plazo'
