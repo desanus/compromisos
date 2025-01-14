@@ -4,6 +4,7 @@ import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
 
 import Form from 'react-bootstrap/Form';
+const URL = import.meta.env.VITE_API_URL
 
 const ExploradorCompromisos = (props) => {
 
@@ -20,7 +21,7 @@ const ExploradorCompromisos = (props) => {
     const [checkboxValue, setCheckboxValue] = useState('');
 
     useEffect(() => {
-        fetch('https://sigem.lanus.gob.ar:8989/api/areas')
+        fetch(`${URL}/areas`)
             .then(response => response.json())
             .then(data => setBotones(data.areas))
             .catch(error => console.error('Error fetching data:', error));
@@ -29,7 +30,7 @@ const ExploradorCompromisos = (props) => {
     const [ejes, setEjes] = useState([]);
 
     useEffect(() => {
-        fetch('https://sigem.lanus.gob.ar:8989/api/ejes')
+        fetch(`${URL}/ejes`)
             .then(response => response.json())
             .then(data => setEjes(data.ejes))
             .catch(error => console.error('Error fetching data:', error));
@@ -209,7 +210,7 @@ const ExploradorCompromisos = (props) => {
 
     return (
         <>
-            <Card style={{ border: "none", backgroundColor:"aliceblue" }} >
+            <Card style={{ border: "none", backgroundColor:"aliceblue", borderRadius:20 }} >
                 <Card.Body>
                     {/* <Card.Title style={{ fontSize: "30px" }}>Explorador de compromisos</Card.Title>
                     <Card.Title ><p>Elegí el año y buscá los compromisos por área, eje temático ó bien podés buscar por palabra clave.</p></Card.Title>

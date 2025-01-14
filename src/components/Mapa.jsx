@@ -20,7 +20,7 @@ const Mapa = (props) => {
      const lanus = [-34.7015147, -58.4024018]
  
    
-
+    console.log(props.compromiso)
     return (
         <MapContainer  center={lanus} zoom={13} scrollWheelZoom={true} attributionControl={false}>
             <TileLayer

@@ -18,16 +18,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Compromisos />
       },
       {
         path: "compromiso/:compromisoId/anio/:anio",
-        element: <Compromiso/>,
-      },
+        element: <Compromiso />,
+      }
     ],
   },
 ]);
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

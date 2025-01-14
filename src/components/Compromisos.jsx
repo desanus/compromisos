@@ -5,8 +5,9 @@ import Filtros from './Filtros';
 import TarjetasCompromisos from './TarjetasCompromisos';
 import InfoHome from './InfoHome';
 import BotonesEjes from './BotonesEjes';
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Tabs, Tab} from 'react-bootstrap'
 
+const URL = import.meta.env.VITE_API_URL
 
 const Compromisos = () => {
 
@@ -18,7 +19,7 @@ const Compromisos = () => {
     const [compromisosPorAnio, setCompromisosPorAnio] = useState([]);
 
     useEffect(() => {
-        fetch('https://sigem.lanus.gob.ar:8989/api/compromisos')
+        fetch(`${URL}/compromisos`)
             .then(response => response.json())
             .then(data => {
                 setCompromisos(data.compromisos)
@@ -72,9 +73,9 @@ const Compromisos = () => {
                 </Row>
             <p></p>
             <div>
-            <TarjetasCompromisos compromisos={compromisosFiltrados} selectedAnio={selectedAnio} />
+            {/* <TarjetasCompromisos compromisos={compromisosFiltrados} selectedAnio={selectedAnio} /> */}
 
-                {/* <Tabs
+                <Tabs
                     defaultActiveKey={1}
                     style={{borderBlock:"aliceblue"}}
                     id="fill-tab-example"
@@ -82,7 +83,7 @@ const Compromisos = () => {
                     fill
                     onSelect={() => { setMapaActivo(true) }}
                 >
-                    <Tab eventKey={1} title="">
+                    <Tab eventKey={1} title="Compromisos">
                         <TarjetasCompromisos compromisos={compromisosFiltrados} selectedAnio={selectedAnio} />
 
                     </Tab>
@@ -95,7 +96,7 @@ const Compromisos = () => {
 
                     </Tab> 
 
-                </Tabs> */}
+                </Tabs>
 
             </div>
 

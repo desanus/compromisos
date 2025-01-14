@@ -6,7 +6,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Link } from "react-router-dom";
 import Checklist from './Checklist';
 import { Line, Circle } from 'rc-progress';
-
+import completo from '../img/yes.png'
 
 const ModalCompromiso = (props) => {
     const cerrarModal = () => {
@@ -38,6 +38,8 @@ const ModalCompromiso = (props) => {
             }
         }
     }
+
+    console.log(props)
     return (
         <Modal show={props.show} onHide={() => { cerrarModal() }} className="modal-info" size="xl" centered >
 
@@ -49,7 +51,12 @@ const ModalCompromiso = (props) => {
                     <Col>
                         <Row style={{ marginTop: "20px" }}>
                             <Col className='columna' md={4} style={{ marginBottom: "20px" }}>
-                                <img src={obtenerIcono()} className="img" />
+                                <div className="contenedor-imagenes" >
+                                    <img src={obtenerIcono()} className="img" />
+                                    {(props.porcentaje === 100) ?
+                                        <img className="imagen-superpuesta" style={{marginTop:20, marginLeft:-20}} src={completo} alt="Imagen superpuesta" /> : <></>
+                                    }
+                                </div>
                             </Col>
                             <Col>
                                 <Row>
@@ -68,7 +75,7 @@ const ModalCompromiso = (props) => {
                                             Etapas del compromiso:
                                         </label>
                                         : <></>}
-                                        
+
                                     <Row style={{ fontSize: "15px" }}>
                                         {(props.compromiso.etapas) ? <Checklist etapas={props.compromiso.etapas} /> : <></>}
 
